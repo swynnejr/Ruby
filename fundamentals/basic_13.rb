@@ -40,11 +40,54 @@
 
 
 # Find array of odd numbers 1-255
-
-# Why wont this .to_a work?
+# THIS WORKS NOW
+# p INSTEAD OF puts
 # x = (1..255).step(2)
-# puts x.to_a
+# p x.to_a
 
-arr = []
-for i in 1..255
+# https://ruby-doc.org/core-2.4.3/Array.html#method-i-each
+# https://ruby-doc.org/core-2.4.3/Array.html#method-i-3C-3C
+# arr = []
+# (1..255).each { |i| arr << i if i.odd?}
+# p arr
 
+# Greater than y
+# arr = [1,3,5,7]
+# y=3
+# greater = arr.find_all { |i| i > y }
+# puts greater.length
+# or puts greater.count
+
+
+# Square values
+# arr = [1,5,10,-2]
+# puts arr.map! {|i| i * i}
+
+
+# Replace negative numbers with 0
+# arr = [1,5,10,-2]
+# # p arr.each_index { |i| arr[i] = 0 if arr[i] < 0 }
+# # INTERESTING STACK OVERFLOW IDEA:
+# p arr.map!{|i| [0,i].max}
+
+# Max/Min/Avg with TWO TEST CASES, ONLY RUN ONE AT A TIME
+# arr = [1,5,10,-2]
+# arr = [4, 13, 64, -5, -22]
+# new_arr = []
+# new_arr << arr.max
+# new_arr << arr.min
+# sum = arr.reduce(0) {|a,v| a + v }
+# nums = arr.length
+# new_arr << sum/nums
+# p new_arr
+
+
+# Shift values in array
+# arr = [1,5,10,7,-2]
+# arr.shift
+# p arr.push(0)
+
+
+# Number to string
+arr = [-1,-3,2]
+p arr.each_index {|i| arr[i] = "Dojo" if arr[i] < 0}
