@@ -6,4 +6,4 @@ e = {first_name: "Jennifer", last_name: "Smith"}
 names = [a, b, c, d, e]
 
 puts "You have #{names.length} names in the 'names' array"
-names.each {|name| puts "The name is #{:first_name} #{:last_name}"}
+names.each {|name| puts "The name is #{name[:first_name]} #{name[:last_name]}"}
