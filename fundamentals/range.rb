@@ -6,11 +6,16 @@ y = ('a'..'z')
 # puts b.include?(10) # > false
 
 
-# puts a.last # > 10
-# puts b.last # > 10  WHY DOES .last NOT EXCLUDE 10 on b which has a range of ...??
+puts a.last # > 10
+puts b.last # > 10  WHY DOES .last NOT EXCLUDE 10 on b which has a range of ...??
 # puts y.last # > z
 
-puts a.max
-puts a.min
-puts b.max
-puts b.min
+puts a.last(3)
+puts b.last(3)  # THIS BEHAVES AS EXPECTED, COMPARED TO QUESTION ABOVE
+# puts y.last(13)
+
+
+# puts a.max
+# puts a.min
+# puts b.max
+# puts b.min
