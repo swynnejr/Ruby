@@ -7,3 +7,5 @@ names = [a, b, c, d, e]
 
 puts "You have #{names.length} names in the 'names' array"
 names.each {|name| puts "The name is #{name[:first_name]} #{name[:last_name]}"}
+
+# TO ACCESS A HASH, YOU NEED []
