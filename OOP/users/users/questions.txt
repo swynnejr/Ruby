@@ -178,4 +178,6 @@ Loading development environment (Rails 4.2.7)
    (0.1ms)  begin transaction
    (0.1ms)  rollback transaction
  => false
-2.3.1 :027 >
+2.3.1 :027 > user.errors.full_messages
+ => ["First name can't be blank", "First name is too short (minimum is 2 characters)", "Last name can't be blank", "Last name is too short (minimum is 2 characters)", "Email address can't be blank", "Age can't be blank", "Age is not a number"]
+2.3.1 :028 >
