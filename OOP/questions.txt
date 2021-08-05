@@ -1,0 +1,181 @@
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/oop/users/users$ rails g model User first_name:string last_name:string email_address:string age:integer
+Running via Spring preloader in process 17874
+      invoke  active_record
+      create    db/migrate/20210805035745_create_users.rb
+      create    app/models/user.rb
+      invoke    test_unit
+      create      test/models/user_test.rb
+      create      test/fixtures/users.yml
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/oop/users/users$ rake db:migrate
+== 20210805035745 CreateUsers: migrating ======================================
+-- create_table(:users)
+   -> 0.0049s
+== 20210805035745 CreateUsers: migrated (0.0054s) =============================
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/oop/users/users$ Hirb.enable
+Hirb.enable: command not found
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/oop/users/users$ rails c
+Running via Spring preloader in process 18035
+Loading development environment (Rails 4.2.7)
+2.3.1 :001 > Hirb.enable
+ => true
+2.3.1 :002 > User.create (first_name: "Sally", last_name: "Smith", email_address: "sally@mail.com, age: 14)
+2.3.1 :003"> User.create (first_name: "Sally", last_name: "Smith", email_address: "sally@mail.com", age: 14)
+2.3.1 :004"> User.create(first_name: "Sally", last_name: "Smith", email_address: "sally@mail.com", age: 14)
+2.3.1 :005"> reload!
+2.3.1 :006"> users = User.all
+2.3.1 :007">
+2.3.1 :008"> exit
+2.3.1 :009"> ^C
+2.3.1 :009 > User.create(first_name: "Sally", last_name: "Smith", email_address: "sally@mail.com", age: 14)
+   (0.0ms)  begin transaction
+  SQL (3.6ms)  INSERT INTO "users" ("first_name", "last_name", "email_address", "age", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["first_name", "Sally"], ["last_name", "Smith"], ["email_address", "sally@mail.com"], ["age", 14], ["created_at", "2021-08-05 04:30:58.866593"], ["updated_at", "2021-08-05 04:30:58.866593"]]
+   (6.2ms)  commit transaction
++----+------------+-----------+----------------+-----+-------------------------+-------------------------+
+| id | first_name | last_name | email_address  | age | created_at              | updated_at              |
++----+------------+-----------+----------------+-----+-------------------------+-------------------------+
+| 1  | Sally      | Smith     | sally@mail.com | 14  | 2021-08-05 04:30:58 UTC | 2021-08-05 04:30:58 UTC |
++----+------------+-----------+----------------+-----+-------------------------+-------------------------+
+1 row in set
+2.3.1 :010 > User.create(first_name: "Bob", last_name: "Loblaw", email_address: "bob@mail.com", age: 42)
+   (0.1ms)  begin transaction
+  SQL (5.6ms)  INSERT INTO "users" ("first_name", "last_name", "email_address", "age", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["first_name", "Bob"], ["last_name", "Loblaw"], ["email_address", "bob@mail.com"], ["age", 42], ["created_at", "2021-08-05 04:32:12.688601"], ["updated_at", "2021-08-05 04:32:12.688601"]]
+   (7.4ms)  commit transaction
++----+------------+-----------+---------------+-----+-------------------------+-------------------------+
+| id | first_name | last_name | email_address | age | created_at              | updated_at              |
++----+------------+-----------+---------------+-----+-------------------------+-------------------------+
+| 2  | Bob        | Loblaw    | bob@mail.com  | 42  | 2021-08-05 04:32:12 UTC | 2021-08-05 04:32:12 UTC |
++----+------------+-----------+---------------+-----+-------------------------+-------------------------+
+1 row in set
+2.3.1 :011 > User.create(first_name: "Chuck", last_name: "Berry", email_address: "charles@mail.com", age: 63)
+   (0.1ms)  begin transaction
+  SQL (5.1ms)  INSERT INTO "users" ("first_name", "last_name", "email_address", "age", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["first_name", "Chuck"], ["last_name", "Berry"], ["email_address", "charles@mail.com"], ["age", 63], ["created_at", "2021-08-05 04:32:36.633496"], ["updated_at", "2021-08-05 04:32:36.633496"]]
+   (6.9ms)  commit transaction
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+| id | first_name | last_name | email_address    | age | created_at              | updated_at              |
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+| 3  | Chuck      | Berry     | charles@mail.com | 63  | 2021-08-05 04:32:36 UTC | 2021-08-05 04:32:36 UTC |
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+1 row in set
+2.3.1 :012 > User.create(first_name: "Melissa", last_name: "Wynne", email_address: "mel@mail.com", age: 28)
+   (0.1ms)  begin transaction
+  SQL (4.2ms)  INSERT INTO "users" ("first_name", "last_name", "email_address", "age", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["first_name", "Melissa"], ["last_name", "Wynne"], ["email_address", "mel@mail.com"], ["age", 28], ["created_at", "2021-08-05 04:33:10.560250"], ["updated_at", "2021-08-05 04:33:10.560250"]]
+   (5.8ms)  commit transaction
++----+------------+-----------+---------------+-----+-------------------------+-------------------------+
+| id | first_name | last_name | email_address | age | created_at              | updated_at              |
++----+------------+-----------+---------------+-----+-------------------------+-------------------------+
+| 4  | Melissa    | Wynne     | mel@mail.com  | 28  | 2021-08-05 04:33:10 UTC | 2021-08-05 04:33:10 UTC |
++----+------------+-----------+---------------+-----+-------------------------+-------------------------+
+1 row in set
+2.3.1 :013 > users = User.all
+  User Load (1.7ms)  SELECT "users".* FROM "users"
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+| id | first_name | last_name | email_address    | age | created_at              | updated_at              |
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+| 1  | Sally      | Smith     | sally@mail.com   | 14  | 2021-08-05 04:30:58 UTC | 2021-08-05 04:30:58 UTC |
+| 2  | Bob        | Loblaw    | bob@mail.com     | 42  | 2021-08-05 04:32:12 UTC | 2021-08-05 04:32:12 UTC |
+| 3  | Chuck      | Berry     | charles@mail.com | 63  | 2021-08-05 04:32:36 UTC | 2021-08-05 04:32:36 UTC |
+| 4  | Melissa    | Wynne     | mel@mail.com     | 28  | 2021-08-05 04:33:10 UTC | 2021-08-05 04:33:10 UTC |
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+4 rows in set
+2.3.1 :014 > users = User.first
+  User Load (2.1ms)  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
++----+------------+-----------+----------------+-----+-------------------------+-------------------------+
+| id | first_name | last_name | email_address  | age | created_at              | updated_at              |
++----+------------+-----------+----------------+-----+-------------------------+-------------------------+
+| 1  | Sally      | Smith     | sally@mail.com | 14  | 2021-08-05 04:30:58 UTC | 2021-08-05 04:30:58 UTC |
++----+------------+-----------+----------------+-----+-------------------------+-------------------------+
+1 row in set
+2.3.1 :015 > users = User.last
+  User Load (1.5ms)  SELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1
++----+------------+-----------+---------------+-----+-------------------------+-------------------------+
+| id | first_name | last_name | email_address | age | created_at              | updated_at              |
++----+------------+-----------+---------------+-----+-------------------------+-------------------------+
+| 4  | Melissa    | Wynne     | mel@mail.com  | 28  | 2021-08-05 04:33:10 UTC | 2021-08-05 04:33:10 UTC |
++----+------------+-----------+---------------+-----+-------------------------+-------------------------+
+1 row in set
+2.3.1 :016 > users = User.order(first_name: :desc)
+  User Load (1.7ms)  SELECT "users".* FROM "users"  ORDER BY "users"."first_name" DESC
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+| id | first_name | last_name | email_address    | age | created_at              | updated_at              |
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+| 1  | Sally      | Smith     | sally@mail.com   | 14  | 2021-08-05 04:30:58 UTC | 2021-08-05 04:30:58 UTC |
+| 4  | Melissa    | Wynne     | mel@mail.com     | 28  | 2021-08-05 04:33:10 UTC | 2021-08-05 04:33:10 UTC |
+| 3  | Chuck      | Berry     | charles@mail.com | 63  | 2021-08-05 04:32:36 UTC | 2021-08-05 04:32:36 UTC |
+| 2  | Bob        | Loblaw    | bob@mail.com     | 42  | 2021-08-05 04:32:12 UTC | 2021-08-05 04:32:12 UTC |
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+4 rows in set
+2.3.1 :017 > user = User.find(3)
+  User Load (1.1ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+| id | first_name | last_name | email_address    | age | created_at              | updated_at              |
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+| 3  | Chuck      | Berry     | charles@mail.com | 63  | 2021-08-05 04:32:36 UTC | 2021-08-05 04:32:36 UTC |
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+1 row in set
+2.3.1 :018 > user.last_name = "Berrie"
+ => "Berrie"
+2.3.1 :019 > user.save
+   (0.1ms)  begin transaction
+  SQL (3.9ms)  UPDATE "users" SET "last_name" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_name", "Berrie"], ["updated_at", "2021-08-05 04:39:53.681547"], ["id", 3]]
+   (6.8ms)  commit transaction
+ => true
+2.3.1 :020 > user = User.find(3)
+  User Load (1.7ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+| id | first_name | last_name | email_address    | age | created_at              | updated_at              |
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+| 3  | Chuck      | Berrie    | charles@mail.com | 63  | 2021-08-05 04:32:36 UTC | 2021-08-05 04:39:53 UTC |
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+1 row in set
+2.3.1 :021 > delete = User.last.destroy
+  User Load (2.3ms)  SELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1
+   (0.1ms)  begin transaction
+  SQL (3.3ms)  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 4]]
+   (6.9ms)  commit transaction
++----+------------+-----------+---------------+-----+-------------------------+-------------------------+
+| id | first_name | last_name | email_address | age | created_at              | updated_at              |
++----+------------+-----------+---------------+-----+-------------------------+-------------------------+
+| 4  | Melissa    | Wynne     | mel@mail.com  | 28  | 2021-08-05 04:33:10 UTC | 2021-08-05 04:33:10 UTC |
++----+------------+-----------+---------------+-----+-------------------------+-------------------------+
+1 row in set
+2.3.1 :022 > users = User.all
+  User Load (2.5ms)  SELECT "users".* FROM "users"
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+| id | first_name | last_name | email_address    | age | created_at              | updated_at              |
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+| 1  | Sally      | Smith     | sally@mail.com   | 14  | 2021-08-05 04:30:58 UTC | 2021-08-05 04:30:58 UTC |
+| 2  | Bob        | Loblaw    | bob@mail.com     | 42  | 2021-08-05 04:32:12 UTC | 2021-08-05 04:32:12 UTC |
+| 3  | Chuck      | Berrie    | charles@mail.com | 63  | 2021-08-05 04:32:36 UTC | 2021-08-05 04:39:53 UTC |
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+3 rows in set
+2.3.1 :023 >
+2.3.1 :023 > User.new
++----+------------+-----------+---------------+-----+------------+------------+
+| id | first_name | last_name | email_address | age | created_at | updated_at |
++----+------------+-----------+---------------+-----+------------+------------+
+|    |            |           |               |     |            |            |
++----+------------+-----------+---------------+-----+------------+------------+
+1 row in set
+2.3.1 :024 > users = User.all
+  User Load (1.9ms)  SELECT "users".* FROM "users"
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+| id | first_name | last_name | email_address    | age | created_at              | updated_at              |
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+| 1  | Sally      | Smith     | sally@mail.com   | 14  | 2021-08-05 04:30:58 UTC | 2021-08-05 04:30:58 UTC |
+| 2  | Bob        | Loblaw    | bob@mail.com     | 42  | 2021-08-05 04:32:12 UTC | 2021-08-05 04:32:12 UTC |
+| 3  | Chuck      | Berrie    | charles@mail.com | 63  | 2021-08-05 04:32:36 UTC | 2021-08-05 04:39:53 UTC |
++----+------------+-----------+------------------+-----+-------------------------+-------------------------+
+3 rows in set
+2.3.1 :025 > user = User.new
++----+------------+-----------+---------------+-----+------------+------------+
+| id | first_name | last_name | email_address | age | created_at | updated_at |
++----+------------+-----------+---------------+-----+------------+------------+
+|    |            |           |               |     |            |            |
++----+------------+-----------+---------------+-----+------------+------------+
+1 row in set
+2.3.1 :026 > user.save
+   (0.1ms)  begin transaction
+   (0.1ms)  rollback transaction
+ => false
+2.3.1 :027 >
