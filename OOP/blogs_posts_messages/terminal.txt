@@ -380,3 +380,685 @@ ActiveRecord::UnknownAttributeError: unknown attribute 'content' for Message.
 +----+-------------+---------------------------------------+-------------------------+-------------------------+
 5 rows in set
 2.3.1 :008 > exit
+
+2.3.1 :002 > Post.all
+  Post Load (5.9ms)  SELECT "posts".* FROM "posts"
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| id | title          | content                                    | created_at              | updated_at              | blog_id |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| 1  | WOW: Dwarves   | Dwarves rule, elves drool.                 | 2021-08-05 02:53:41 UTC | 2021-08-05 02:53:41 UTC |         |
+| 2  | WOW: Elves     | Dwarves are the worst.                     | 2021-08-05 02:54:37 UTC | 2021-08-05 02:54:37 UTC |         |
+| 3  | WOW: Expansion | Whats next?                                | 2021-08-05 02:55:25 UTC | 2021-08-05 02:55:25 UTC |         |
+| 4  | SC2: Protoss   | Got pylons?                                | 2021-08-05 02:56:25 UTC | 2021-08-05 02:56:25 UTC |         |
+| 5  | SC2: Zerg      | Is creep really creepy?                    | 2021-08-05 02:56:48 UTC | 2021-08-05 02:56:48 UTC |         |
+| 6  | SC2: Terrans   | Which expansion is best for each building? | 2021-08-05 02:57:35 UTC | 2021-08-05 02:57:35 UTC |         |
+| 7  | Halo: CE       | Was the first Halo the best Halo?          | 2021-08-05 02:58:23 UTC | 2021-08-05 02:58:23 UTC |         |
+| 8  | Halo: 2        | Matchmaking at it's finest.                | 2021-08-05 02:58:56 UTC | 2021-08-05 02:58:56 UTC |         |
+| 9  | Halo: 3        | Is the Arbiter really a hero?              | 2021-08-05 02:59:23 UTC | 2021-08-05 02:59:23 UTC |         |
+| 10 | Life of Link   | Why does everyone call me Zelda?           | 2021-08-05 03:00:54 UTC | 2021-08-05 03:00:54 UTC |         |
+| 11 | Life of Link   | Was Link to the Past the best game?        | 2021-08-05 03:01:30 UTC | 2021-08-05 03:01:30 UTC |         |
+| 12 | Life of Link   | Can you play the ocarina?                  | 2021-08-05 03:01:45 UTC | 2021-08-05 03:01:45 UTC |         |
+| 13 | Arkham Asylum  | The first game set the tone.               | 2021-08-05 03:02:45 UTC | 2021-08-05 03:02:45 UTC |         |
+| 14 | Arkham Island  | Episode two: building a legend.            | 2021-08-05 03:04:36 UTC | 2021-08-05 03:04:36 UTC |         |
+| 15 | Arkham Island  | The batmobile is the star.                 | 2021-08-05 03:05:09 UTC | 2021-08-05 03:05:09 UTC |         |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+15 rows in set
+2.3.1 :003 > p = Post.first
+  Post Load (2.1ms)  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1
++----+--------------+----------------------------+-------------------------+-------------------------+---------+
+| id | title        | content                    | created_at              | updated_at              | blog_id |
++----+--------------+----------------------------+-------------------------+-------------------------+---------+
+| 1  | WOW: Dwarves | Dwarves rule, elves drool. | 2021-08-05 02:53:41 UTC | 2021-08-05 02:53:41 UTC |         |
++----+--------------+----------------------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :004 > p.blog = Blog.first
+  Blog Load (1.0ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1
++----+----------+------------------------+-------------------------+-------------------------+
+| id | name     | description            | created_at              | updated_at              |
++----+----------+------------------------+-------------------------+-------------------------+
+| 1  | WOW Blog | Really great WOW Blog. | 2021-08-04 22:41:59 UTC | 2021-08-04 22:41:59 UTC |
++----+----------+------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :005 > p.save
+   (0.1ms)  begin transaction
+  SQL (3.5ms)  UPDATE "posts" SET "blog_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["blog_id", 1], ["updated_at", "2021-08-05 19:59:19.004913"], ["id", 1]]
+   (2.6ms)  commit transaction
+ => true
+2.3.1 :006 > Post.all
+  Post Load (1.9ms)  SELECT "posts".* FROM "posts"
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| id | title          | content                                    | created_at              | updated_at              | blog_id |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| 1  | WOW: Dwarves   | Dwarves rule, elves drool.                 | 2021-08-05 02:53:41 UTC | 2021-08-05 19:59:19 UTC | 1       |
+| 2  | WOW: Elves     | Dwarves are the worst.                     | 2021-08-05 02:54:37 UTC | 2021-08-05 02:54:37 UTC |         |
+| 3  | WOW: Expansion | Whats next?                                | 2021-08-05 02:55:25 UTC | 2021-08-05 02:55:25 UTC |         |
+| 4  | SC2: Protoss   | Got pylons?                                | 2021-08-05 02:56:25 UTC | 2021-08-05 02:56:25 UTC |         |
+| 5  | SC2: Zerg      | Is creep really creepy?                    | 2021-08-05 02:56:48 UTC | 2021-08-05 02:56:48 UTC |         |
+| 6  | SC2: Terrans   | Which expansion is best for each building? | 2021-08-05 02:57:35 UTC | 2021-08-05 02:57:35 UTC |         |
+| 7  | Halo: CE       | Was the first Halo the best Halo?          | 2021-08-05 02:58:23 UTC | 2021-08-05 02:58:23 UTC |         |
+| 8  | Halo: 2        | Matchmaking at it's finest.                | 2021-08-05 02:58:56 UTC | 2021-08-05 02:58:56 UTC |         |
+| 9  | Halo: 3        | Is the Arbiter really a hero?              | 2021-08-05 02:59:23 UTC | 2021-08-05 02:59:23 UTC |         |
+| 10 | Life of Link   | Why does everyone call me Zelda?           | 2021-08-05 03:00:54 UTC | 2021-08-05 03:00:54 UTC |         |
+| 11 | Life of Link   | Was Link to the Past the best game?        | 2021-08-05 03:01:30 UTC | 2021-08-05 03:01:30 UTC |         |
+| 12 | Life of Link   | Can you play the ocarina?                  | 2021-08-05 03:01:45 UTC | 2021-08-05 03:01:45 UTC |         |
+| 13 | Arkham Asylum  | The first game set the tone.               | 2021-08-05 03:02:45 UTC | 2021-08-05 03:02:45 UTC |         |
+| 14 | Arkham Island  | Episode two: building a legend.            | 2021-08-05 03:04:36 UTC | 2021-08-05 03:04:36 UTC |         |
+| 15 | Arkham Island  | The batmobile is the star.                 | 2021-08-05 03:05:09 UTC | 2021-08-05 03:05:09 UTC |         |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+15 rows in set
+2.3.1 :007 > p = Post.second
+  Post Load (2.4ms)  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1 OFFSET 1
++----+------------+------------------------+-------------------------+-------------------------+---------+
+| id | title      | content                | created_at              | updated_at              | blog_id |
++----+------------+------------------------+-------------------------+-------------------------+---------+
+| 2  | WOW: Elves | Dwarves are the worst. | 2021-08-05 02:54:37 UTC | 2021-08-05 02:54:37 UTC |         |
++----+------------+------------------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :008 > p.blog = Blog.first
+  Blog Load (2.1ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1
++----+----------+------------------------+-------------------------+-------------------------+
+| id | name     | description            | created_at              | updated_at              |
++----+----------+------------------------+-------------------------+-------------------------+
+| 1  | WOW Blog | Really great WOW Blog. | 2021-08-04 22:41:59 UTC | 2021-08-04 22:41:59 UTC |
++----+----------+------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :009 > p.save
+   (0.1ms)  begin transaction
+  SQL (3.8ms)  UPDATE "posts" SET "blog_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["blog_id", 1], ["updated_at", "2021-08-05 20:00:04.232913"], ["id", 2]]
+   (3.2ms)  commit transaction
+ => true
+2.3.1 :010 > Post.all
+  Post Load (2.0ms)  SELECT "posts".* FROM "posts"
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| id | title          | content                                    | created_at              | updated_at              | blog_id |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| 1  | WOW: Dwarves   | Dwarves rule, elves drool.                 | 2021-08-05 02:53:41 UTC | 2021-08-05 19:59:19 UTC | 1       |
+| 2  | WOW: Elves     | Dwarves are the worst.                     | 2021-08-05 02:54:37 UTC | 2021-08-05 20:00:04 UTC | 1       |
+| 3  | WOW: Expansion | Whats next?                                | 2021-08-05 02:55:25 UTC | 2021-08-05 02:55:25 UTC |         |
+| 4  | SC2: Protoss   | Got pylons?                                | 2021-08-05 02:56:25 UTC | 2021-08-05 02:56:25 UTC |         |
+| 5  | SC2: Zerg      | Is creep really creepy?                    | 2021-08-05 02:56:48 UTC | 2021-08-05 02:56:48 UTC |         |
+| 6  | SC2: Terrans   | Which expansion is best for each building? | 2021-08-05 02:57:35 UTC | 2021-08-05 02:57:35 UTC |         |
+| 7  | Halo: CE       | Was the first Halo the best Halo?          | 2021-08-05 02:58:23 UTC | 2021-08-05 02:58:23 UTC |         |
+| 8  | Halo: 2        | Matchmaking at it's finest.                | 2021-08-05 02:58:56 UTC | 2021-08-05 02:58:56 UTC |         |
+| 9  | Halo: 3        | Is the Arbiter really a hero?              | 2021-08-05 02:59:23 UTC | 2021-08-05 02:59:23 UTC |         |
+| 10 | Life of Link   | Why does everyone call me Zelda?           | 2021-08-05 03:00:54 UTC | 2021-08-05 03:00:54 UTC |         |
+| 11 | Life of Link   | Was Link to the Past the best game?        | 2021-08-05 03:01:30 UTC | 2021-08-05 03:01:30 UTC |         |
+| 12 | Life of Link   | Can you play the ocarina?                  | 2021-08-05 03:01:45 UTC | 2021-08-05 03:01:45 UTC |         |
+| 13 | Arkham Asylum  | The first game set the tone.               | 2021-08-05 03:02:45 UTC | 2021-08-05 03:02:45 UTC |         |
+| 14 | Arkham Island  | Episode two: building a legend.            | 2021-08-05 03:04:36 UTC | 2021-08-05 03:04:36 UTC |         |
+| 15 | Arkham Island  | The batmobile is the star.                 | 2021-08-05 03:05:09 UTC | 2021-08-05 03:05:09 UTC |         |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+15 rows in set
+2.3.1 :011 > p = Post.third
+  Post Load (2.1ms)  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1 OFFSET 2
++----+----------------+-------------+-------------------------+-------------------------+---------+
+| id | title          | content     | created_at              | updated_at              | blog_id |
++----+----------------+-------------+-------------------------+-------------------------+---------+
+| 3  | WOW: Expansion | Whats next? | 2021-08-05 02:55:25 UTC | 2021-08-05 02:55:25 UTC |         |
++----+----------------+-------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :012 > p.blog = Blog.first
+  Blog Load (2.0ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1
++----+----------+------------------------+-------------------------+-------------------------+
+| id | name     | description            | created_at              | updated_at              |
++----+----------+------------------------+-------------------------+-------------------------+
+| 1  | WOW Blog | Really great WOW Blog. | 2021-08-04 22:41:59 UTC | 2021-08-04 22:41:59 UTC |
++----+----------+------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :013 > p.save
+   (0.1ms)  begin transaction
+  SQL (4.8ms)  UPDATE "posts" SET "blog_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["blog_id", 1], ["updated_at", "2021-08-05 20:00:29.524187"], ["id", 3]]
+   (2.2ms)  commit transaction
+ => true
+2.3.1 :014 > p = Post.fourth
+  Post Load (2.1ms)  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1 OFFSET 3
++----+--------------+-------------+-------------------------+-------------------------+---------+
+| id | title        | content     | created_at              | updated_at              | blog_id |
++----+--------------+-------------+-------------------------+-------------------------+---------+
+| 4  | SC2: Protoss | Got pylons? | 2021-08-05 02:56:25 UTC | 2021-08-05 02:56:25 UTC |         |
++----+--------------+-------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :015 > p.blog = Blog.second
+  Blog Load (1.4ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1 OFFSET 1
++----+----------+--------------------------------+-------------------------+-------------------------+
+| id | name     | description                    | created_at              | updated_at              |
++----+----------+--------------------------------+-------------------------+-------------------------+
+| 2  | SC2 Blog | Really great Starcraft 2 Blog. | 2021-08-04 22:42:33 UTC | 2021-08-04 22:42:33 UTC |
++----+----------+--------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :016 > p.save
+   (0.1ms)  begin transaction
+  SQL (4.9ms)  UPDATE "posts" SET "blog_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["blog_id", 2], ["updated_at", "2021-08-05 20:02:59.402973"], ["id", 4]]
+   (2.3ms)  commit transaction
+ => true
+2.3.1 :017 > p = Post.fifth
+  Post Load (2.4ms)  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1 OFFSET 4
++----+-----------+-------------------------+-------------------------+-------------------------+---------+
+| id | title     | content                 | created_at              | updated_at              | blog_id |
++----+-----------+-------------------------+-------------------------+-------------------------+---------+
+| 5  | SC2: Zerg | Is creep really creepy? | 2021-08-05 02:56:48 UTC | 2021-08-05 02:56:48 UTC |         |
++----+-----------+-------------------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :018 > p.blog = Blog.second
+  Blog Load (2.7ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1 OFFSET 1
++----+----------+--------------------------------+-------------------------+-------------------------+
+| id | name     | description                    | created_at              | updated_at              |
++----+----------+--------------------------------+-------------------------+-------------------------+
+| 2  | SC2 Blog | Really great Starcraft 2 Blog. | 2021-08-04 22:42:33 UTC | 2021-08-04 22:42:33 UTC |
++----+----------+--------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :019 > p.save
+   (0.1ms)  begin transaction
+  SQL (3.4ms)  UPDATE "posts" SET "blog_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["blog_id", 2], ["updated_at", "2021-08-05 20:03:33.515471"], ["id", 5]]
+   (2.6ms)  commit transaction
+ => true
+2.3.1 :020 > Post.all
+  Post Load (2.4ms)  SELECT "posts".* FROM "posts"
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| id | title          | content                                    | created_at              | updated_at              | blog_id |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| 1  | WOW: Dwarves   | Dwarves rule, elves drool.                 | 2021-08-05 02:53:41 UTC | 2021-08-05 19:59:19 UTC | 1       |
+| 2  | WOW: Elves     | Dwarves are the worst.                     | 2021-08-05 02:54:37 UTC | 2021-08-05 20:00:04 UTC | 1       |
+| 3  | WOW: Expansion | Whats next?                                | 2021-08-05 02:55:25 UTC | 2021-08-05 20:00:29 UTC | 1       |
+| 4  | SC2: Protoss   | Got pylons?                                | 2021-08-05 02:56:25 UTC | 2021-08-05 20:02:59 UTC | 2       |
+| 5  | SC2: Zerg      | Is creep really creepy?                    | 2021-08-05 02:56:48 UTC | 2021-08-05 20:03:33 UTC | 2       |
+| 6  | SC2: Terrans   | Which expansion is best for each building? | 2021-08-05 02:57:35 UTC | 2021-08-05 02:57:35 UTC |         |
+| 7  | Halo: CE       | Was the first Halo the best Halo?          | 2021-08-05 02:58:23 UTC | 2021-08-05 02:58:23 UTC |         |
+| 8  | Halo: 2        | Matchmaking at it's finest.                | 2021-08-05 02:58:56 UTC | 2021-08-05 02:58:56 UTC |         |
+| 9  | Halo: 3        | Is the Arbiter really a hero?              | 2021-08-05 02:59:23 UTC | 2021-08-05 02:59:23 UTC |         |
+| 10 | Life of Link   | Why does everyone call me Zelda?           | 2021-08-05 03:00:54 UTC | 2021-08-05 03:00:54 UTC |         |
+| 11 | Life of Link   | Was Link to the Past the best game?        | 2021-08-05 03:01:30 UTC | 2021-08-05 03:01:30 UTC |         |
+| 12 | Life of Link   | Can you play the ocarina?                  | 2021-08-05 03:01:45 UTC | 2021-08-05 03:01:45 UTC |         |
+| 13 | Arkham Asylum  | The first game set the tone.               | 2021-08-05 03:02:45 UTC | 2021-08-05 03:02:45 UTC |         |
+| 14 | Arkham Island  | Episode two: building a legend.            | 2021-08-05 03:04:36 UTC | 2021-08-05 03:04:36 UTC |         |
+| 15 | Arkham Island  | The batmobile is the star.                 | 2021-08-05 03:05:09 UTC | 2021-08-05 03:05:09 UTC |         |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+15 rows in set
+2.3.1 :021 > p = Post.sixth
+NoMethodError: undefined method `sixth' for #<Class:0x00000002ad1ba8>
+
+2.3.1 :023 > Post.all
+  Post Load (2.0ms)  SELECT "posts".* FROM "posts"
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| id | title          | content                                    | created_at              | updated_at              | blog_id |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| 1  | WOW: Dwarves   | Dwarves rule, elves drool.                 | 2021-08-05 02:53:41 UTC | 2021-08-05 19:59:19 UTC | 1       |
+| 2  | WOW: Elves     | Dwarves are the worst.                     | 2021-08-05 02:54:37 UTC | 2021-08-05 20:00:04 UTC | 1       |
+| 3  | WOW: Expansion | Whats next?                                | 2021-08-05 02:55:25 UTC | 2021-08-05 20:00:29 UTC | 1       |
+| 4  | SC2: Protoss   | Got pylons?                                | 2021-08-05 02:56:25 UTC | 2021-08-05 20:02:59 UTC | 2       |
+| 5  | SC2: Zerg      | Is creep really creepy?                    | 2021-08-05 02:56:48 UTC | 2021-08-05 20:03:33 UTC | 2       |
+| 6  | SC2: Terrans   | Which expansion is best for each building? | 2021-08-05 02:57:35 UTC | 2021-08-05 02:57:35 UTC |         |
+| 7  | Halo: CE       | Was the first Halo the best Halo?          | 2021-08-05 02:58:23 UTC | 2021-08-05 02:58:23 UTC |         |
+| 8  | Halo: 2        | Matchmaking at it's finest.                | 2021-08-05 02:58:56 UTC | 2021-08-05 02:58:56 UTC |         |
+| 9  | Halo: 3        | Is the Arbiter really a hero?              | 2021-08-05 02:59:23 UTC | 2021-08-05 02:59:23 UTC |         |
+| 10 | Life of Link   | Why does everyone call me Zelda?           | 2021-08-05 03:00:54 UTC | 2021-08-05 03:00:54 UTC |         |
+| 11 | Life of Link   | Was Link to the Past the best game?        | 2021-08-05 03:01:30 UTC | 2021-08-05 03:01:30 UTC |         |
+| 12 | Life of Link   | Can you play the ocarina?                  | 2021-08-05 03:01:45 UTC | 2021-08-05 03:01:45 UTC |         |
+| 13 | Arkham Asylum  | The first game set the tone.               | 2021-08-05 03:02:45 UTC | 2021-08-05 03:02:45 UTC |         |
+| 14 | Arkham Island  | Episode two: building a legend.            | 2021-08-05 03:04:36 UTC | 2021-08-05 03:04:36 UTC |         |
+| 15 | Arkham Island  | The batmobile is the star.                 | 2021-08-05 03:05:09 UTC | 2021-08-05 03:05:09 UTC |         |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+15 rows in set
+2.3.1 :024 > p = Post.id.6
+SyntaxError: (irb):24: no .<digit> floating literal anymore; put 0 before dot
+p = Post.id.6
+            ^
+(irb):24: syntax error, unexpected tINTEGER, expecting '('
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/console.rb:110:in `start'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/console.rb:9:in `start'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/commands_tasks.rb:68:in `console'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands.rb:17:in `<top (required)>'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:274:in `require'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:274:in `block in require'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:240:in `load_dependency'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:274:in `require'
+        from /vagrant/oop/blogs_posts_messages/blogs/bin/rails:9:in `<top (required)>'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:268:in `load'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:268:in `block in load'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:240:in `load_dependency'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:268:in `load'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/commands/rails.rb:6:in `call'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/command_wrapper.rb:38:in `call'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:201:in `block in serve'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:171:in `fork'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:171:in `serve'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:141:in `block in run'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:135:in `loop'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:135:in `run'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application/boot.rb:19:in `<top (required)>'
+        from /home/vagrant/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+        from /home/vagrant/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+        from -e:1:in `<main>'
+2.3.1 :025 > p = Post.find(6)
+  Post Load (1.6ms)  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 6]]
++----+--------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| id | title        | content                                    | created_at              | updated_at              | blog_id |
++----+--------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| 6  | SC2: Terrans | Which expansion is best for each building? | 2021-08-05 02:57:35 UTC | 2021-08-05 02:57:35 UTC |         |
++----+--------------+--------------------------------------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :026 > p.blog = Blog.second
+  Blog Load (2.6ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1 OFFSET 1
++----+----------+--------------------------------+-------------------------+-------------------------+
+| id | name     | description                    | created_at              | updated_at              |
++----+----------+--------------------------------+-------------------------+-------------------------+
+| 2  | SC2 Blog | Really great Starcraft 2 Blog. | 2021-08-04 22:42:33 UTC | 2021-08-04 22:42:33 UTC |
++----+----------+--------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :027 > p.save
+   (0.1ms)  begin transaction
+  SQL (4.6ms)  UPDATE "posts" SET "blog_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["blog_id", 2], ["updated_at", "2021-08-05 20:12:43.453522"], ["id", 6]]
+   (3.2ms)  commit transaction
+ => true
+2.3.1 :028 > Post.all
+  Post Load (2.2ms)  SELECT "posts".* FROM "posts"
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| id | title          | content                                    | created_at              | updated_at              | blog_id |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| 1  | WOW: Dwarves   | Dwarves rule, elves drool.                 | 2021-08-05 02:53:41 UTC | 2021-08-05 19:59:19 UTC | 1       |
+| 2  | WOW: Elves     | Dwarves are the worst.                     | 2021-08-05 02:54:37 UTC | 2021-08-05 20:00:04 UTC | 1       |
+| 3  | WOW: Expansion | Whats next?                                | 2021-08-05 02:55:25 UTC | 2021-08-05 20:00:29 UTC | 1       |
+| 4  | SC2: Protoss   | Got pylons?                                | 2021-08-05 02:56:25 UTC | 2021-08-05 20:02:59 UTC | 2       |
+| 5  | SC2: Zerg      | Is creep really creepy?                    | 2021-08-05 02:56:48 UTC | 2021-08-05 20:03:33 UTC | 2       |
+| 6  | SC2: Terrans   | Which expansion is best for each building? | 2021-08-05 02:57:35 UTC | 2021-08-05 20:12:43 UTC | 2       |
+| 7  | Halo: CE       | Was the first Halo the best Halo?          | 2021-08-05 02:58:23 UTC | 2021-08-05 02:58:23 UTC |         |
+| 8  | Halo: 2        | Matchmaking at it's finest.                | 2021-08-05 02:58:56 UTC | 2021-08-05 02:58:56 UTC |         |
+| 9  | Halo: 3        | Is the Arbiter really a hero?              | 2021-08-05 02:59:23 UTC | 2021-08-05 02:59:23 UTC |         |
+| 10 | Life of Link   | Why does everyone call me Zelda?           | 2021-08-05 03:00:54 UTC | 2021-08-05 03:00:54 UTC |         |
+| 11 | Life of Link   | Was Link to the Past the best game?        | 2021-08-05 03:01:30 UTC | 2021-08-05 03:01:30 UTC |         |
+| 12 | Life of Link   | Can you play the ocarina?                  | 2021-08-05 03:01:45 UTC | 2021-08-05 03:01:45 UTC |         |
+| 13 | Arkham Asylum  | The first game set the tone.               | 2021-08-05 03:02:45 UTC | 2021-08-05 03:02:45 UTC |         |
+| 14 | Arkham Island  | Episode two: building a legend.            | 2021-08-05 03:04:36 UTC | 2021-08-05 03:04:36 UTC |         |
+| 15 | Arkham Island  | The batmobile is the star.                 | 2021-08-05 03:05:09 UTC | 2021-08-05 03:05:09 UTC |         |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+15 rows in set
+2.3.1 :029 > p = Post.find(7)
+  Post Load (2.4ms)  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 7]]
++----+----------+-----------------------------------+-------------------------+-------------------------+---------+
+| id | title    | content                           | created_at              | updated_at              | blog_id |
++----+----------+-----------------------------------+-------------------------+-------------------------+---------+
+| 7  | Halo: CE | Was the first Halo the best Halo? | 2021-08-05 02:58:23 UTC | 2021-08-05 02:58:23 UTC |         |
++----+----------+-----------------------------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :030 > p.blog = Blog.third
+  Blog Load (1.3ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1 OFFSET 2
++----+-----------+--------------------------+-------------------------+-------------------------+
+| id | name      | description              | created_at              | updated_at              |
++----+-----------+--------------------------+-------------------------+-------------------------+
+| 3  | Halo Blog | Super awesome Halo Blog. | 2021-08-04 22:43:10 UTC | 2021-08-04 22:43:10 UTC |
++----+-----------+--------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :031 > p.save
+   (0.1ms)  begin transaction
+  SQL (4.9ms)  UPDATE "posts" SET "blog_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["blog_id", 3], ["updated_at", "2021-08-05 20:14:05.957584"], ["id", 7]]
+   (7.1ms)  commit transaction
+ => true
+2.3.1 :032 > p = Post.find(8)
+  Post Load (1.8ms)  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 8]]
++----+---------+-----------------------------+-------------------------+-------------------------+---------+
+| id | title   | content                     | created_at              | updated_at              | blog_id |
++----+---------+-----------------------------+-------------------------+-------------------------+---------+
+| 8  | Halo: 2 | Matchmaking at it's finest. | 2021-08-05 02:58:56 UTC | 2021-08-05 02:58:56 UTC |         |
++----+---------+-----------------------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :033 > p.blog = Blog.third
+  Blog Load (1.3ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1 OFFSET 2
++----+-----------+--------------------------+-------------------------+-------------------------+
+| id | name      | description              | created_at              | updated_at              |
++----+-----------+--------------------------+-------------------------+-------------------------+
+| 3  | Halo Blog | Super awesome Halo Blog. | 2021-08-04 22:43:10 UTC | 2021-08-04 22:43:10 UTC |
++----+-----------+--------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :034 > p.save
+   (0.1ms)  begin transaction
+  SQL (3.6ms)  UPDATE "posts" SET "blog_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["blog_id", 3], ["updated_at", "2021-08-05 20:14:26.681578"], ["id", 8]]
+   (2.2ms)  commit transaction
+ => true
+2.3.1 :035 > p = Post.find(9)
+  Post Load (1.8ms)  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 9]]
++----+---------+-------------------------------+-------------------------+-------------------------+---------+
+| id | title   | content                       | created_at              | updated_at              | blog_id |
++----+---------+-------------------------------+-------------------------+-------------------------+---------+
+| 9  | Halo: 3 | Is the Arbiter really a hero? | 2021-08-05 02:59:23 UTC | 2021-08-05 02:59:23 UTC |         |
++----+---------+-------------------------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :036 > p.blog = Blog.third
+  Blog Load (1.2ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1 OFFSET 2
++----+-----------+--------------------------+-------------------------+-------------------------+
+| id | name      | description              | created_at              | updated_at              |
++----+-----------+--------------------------+-------------------------+-------------------------+
+| 3  | Halo Blog | Super awesome Halo Blog. | 2021-08-04 22:43:10 UTC | 2021-08-04 22:43:10 UTC |
++----+-----------+--------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :037 > p.save
+   (0.1ms)  begin transaction
+  SQL (4.4ms)  UPDATE "posts" SET "blog_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["blog_id", 3], ["updated_at", "2021-08-05 20:14:44.357065"], ["id", 9]]
+   (2.3ms)  commit transaction
+ => true
+2.3.1 :038 > Post.all
+  Post Load (1.5ms)  SELECT "posts".* FROM "posts"
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| id | title          | content                                    | created_at              | updated_at              | blog_id |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| 1  | WOW: Dwarves   | Dwarves rule, elves drool.                 | 2021-08-05 02:53:41 UTC | 2021-08-05 19:59:19 UTC | 1       |
+| 2  | WOW: Elves     | Dwarves are the worst.                     | 2021-08-05 02:54:37 UTC | 2021-08-05 20:00:04 UTC | 1       |
+| 3  | WOW: Expansion | Whats next?                                | 2021-08-05 02:55:25 UTC | 2021-08-05 20:00:29 UTC | 1       |
+| 4  | SC2: Protoss   | Got pylons?                                | 2021-08-05 02:56:25 UTC | 2021-08-05 20:02:59 UTC | 2       |
+| 5  | SC2: Zerg      | Is creep really creepy?                    | 2021-08-05 02:56:48 UTC | 2021-08-05 20:03:33 UTC | 2       |
+| 6  | SC2: Terrans   | Which expansion is best for each building? | 2021-08-05 02:57:35 UTC | 2021-08-05 20:12:43 UTC | 2       |
+| 7  | Halo: CE       | Was the first Halo the best Halo?          | 2021-08-05 02:58:23 UTC | 2021-08-05 20:14:05 UTC | 3       |
+| 8  | Halo: 2        | Matchmaking at it's finest.                | 2021-08-05 02:58:56 UTC | 2021-08-05 20:14:26 UTC | 3       |
+| 9  | Halo: 3        | Is the Arbiter really a hero?              | 2021-08-05 02:59:23 UTC | 2021-08-05 20:14:44 UTC | 3       |
+| 10 | Life of Link   | Why does everyone call me Zelda?           | 2021-08-05 03:00:54 UTC | 2021-08-05 03:00:54 UTC |         |
+| 11 | Life of Link   | Was Link to the Past the best game?        | 2021-08-05 03:01:30 UTC | 2021-08-05 03:01:30 UTC |         |
+| 12 | Life of Link   | Can you play the ocarina?                  | 2021-08-05 03:01:45 UTC | 2021-08-05 03:01:45 UTC |         |
+| 13 | Arkham Asylum  | The first game set the tone.               | 2021-08-05 03:02:45 UTC | 2021-08-05 03:02:45 UTC |         |
+| 14 | Arkham Island  | Episode two: building a legend.            | 2021-08-05 03:04:36 UTC | 2021-08-05 03:04:36 UTC |         |
+| 15 | Arkham Island  | The batmobile is the star.                 | 2021-08-05 03:05:09 UTC | 2021-08-05 03:05:09 UTC |         |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+15 rows in set
+2.3.1 :039 > p = Post.find(10)
+  Post Load (1.8ms)  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 10]]
++----+--------------+----------------------------------+-------------------------+-------------------------+---------+
+| id | title        | content                          | created_at              | updated_at              | blog_id |
++----+--------------+----------------------------------+-------------------------+-------------------------+---------+
+| 10 | Life of Link | Why does everyone call me Zelda? | 2021-08-05 03:00:54 UTC | 2021-08-05 03:00:54 UTC |         |
++----+--------------+----------------------------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :040 > p.blog = Blog.fourth
+  Blog Load (1.4ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1 OFFSET 3
++----+------------+----------------------------------+-------------------------+-------------------------+
+| id | name       | description                      | created_at              | updated_at              |
++----+------------+----------------------------------+-------------------------+-------------------------+
+| 4  | Zelda Blog | Incredible Legend of Zelda Blog. | 2021-08-04 22:43:58 UTC | 2021-08-04 22:43:58 UTC |
++----+------------+----------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :041 > p.save
+   (0.1ms)  begin transaction
+  SQL (3.8ms)  UPDATE "posts" SET "blog_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["blog_id", 4], ["updated_at", "2021-08-05 20:15:12.631280"], ["id", 10]]
+   (2.1ms)  commit transaction
+ => true
+2.3.1 :042 > p = Post.find(11)
+  Post Load (2.1ms)  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 11]]
++----+--------------+-------------------------------------+-------------------------+-------------------------+---------+
+| id | title        | content                             | created_at              | updated_at              | blog_id |
++----+--------------+-------------------------------------+-------------------------+-------------------------+---------+
+| 11 | Life of Link | Was Link to the Past the best game? | 2021-08-05 03:01:30 UTC | 2021-08-05 03:01:30 UTC |         |
++----+--------------+-------------------------------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :043 > p.blog = Blog.fourth
+  Blog Load (3.6ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1 OFFSET 3
++----+------------+----------------------------------+-------------------------+-------------------------+
+| id | name       | description                      | created_at              | updated_at              |
++----+------------+----------------------------------+-------------------------+-------------------------+
+| 4  | Zelda Blog | Incredible Legend of Zelda Blog. | 2021-08-04 22:43:58 UTC | 2021-08-04 22:43:58 UTC |
++----+------------+----------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :044 > p.save
+   (0.1ms)  begin transaction
+  SQL (3.2ms)  UPDATE "posts" SET "blog_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["blog_id", 4], ["updated_at", "2021-08-05 20:15:30.584019"], ["id", 11]]
+   (8.8ms)  commit transaction
+ => true
+2.3.1 :045 > p = Post.find(12)
+  Post Load (1.4ms)  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 12]]
++----+--------------+---------------------------+-------------------------+-------------------------+---------+
+| id | title        | content                   | created_at              | updated_at              | blog_id |
++----+--------------+---------------------------+-------------------------+-------------------------+---------+
+| 12 | Life of Link | Can you play the ocarina? | 2021-08-05 03:01:45 UTC | 2021-08-05 03:01:45 UTC |         |
++----+--------------+---------------------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :046 > p.blog = Blog.fourth
+  Blog Load (2.8ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1 OFFSET 3
++----+------------+----------------------------------+-------------------------+-------------------------+
+| id | name       | description                      | created_at              | updated_at              |
++----+------------+----------------------------------+-------------------------+-------------------------+
+| 4  | Zelda Blog | Incredible Legend of Zelda Blog. | 2021-08-04 22:43:58 UTC | 2021-08-04 22:43:58 UTC |
++----+------------+----------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :047 > p.save
+   (0.1ms)  begin transaction
+  SQL (5.4ms)  UPDATE "posts" SET "blog_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["blog_id", 4], ["updated_at", "2021-08-05 20:15:44.091428"], ["id", 12]]
+   (7.8ms)  commit transaction
+ => true
+2.3.1 :048 > Post.all
+  Post Load (1.7ms)  SELECT "posts".* FROM "posts"
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| id | title          | content                                    | created_at              | updated_at              | blog_id |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| 1  | WOW: Dwarves   | Dwarves rule, elves drool.                 | 2021-08-05 02:53:41 UTC | 2021-08-05 19:59:19 UTC | 1       |
+| 2  | WOW: Elves     | Dwarves are the worst.                     | 2021-08-05 02:54:37 UTC | 2021-08-05 20:00:04 UTC | 1       |
+| 3  | WOW: Expansion | Whats next?                                | 2021-08-05 02:55:25 UTC | 2021-08-05 20:00:29 UTC | 1       |
+| 4  | SC2: Protoss   | Got pylons?                                | 2021-08-05 02:56:25 UTC | 2021-08-05 20:02:59 UTC | 2       |
+| 5  | SC2: Zerg      | Is creep really creepy?                    | 2021-08-05 02:56:48 UTC | 2021-08-05 20:03:33 UTC | 2       |
+| 6  | SC2: Terrans   | Which expansion is best for each building? | 2021-08-05 02:57:35 UTC | 2021-08-05 20:12:43 UTC | 2       |
+| 7  | Halo: CE       | Was the first Halo the best Halo?          | 2021-08-05 02:58:23 UTC | 2021-08-05 20:14:05 UTC | 3       |
+| 8  | Halo: 2        | Matchmaking at it's finest.                | 2021-08-05 02:58:56 UTC | 2021-08-05 20:14:26 UTC | 3       |
+| 9  | Halo: 3        | Is the Arbiter really a hero?              | 2021-08-05 02:59:23 UTC | 2021-08-05 20:14:44 UTC | 3       |
+| 10 | Life of Link   | Why does everyone call me Zelda?           | 2021-08-05 03:00:54 UTC | 2021-08-05 20:15:12 UTC | 4       |
+| 11 | Life of Link   | Was Link to the Past the best game?        | 2021-08-05 03:01:30 UTC | 2021-08-05 20:15:30 UTC | 4       |
+| 12 | Life of Link   | Can you play the ocarina?                  | 2021-08-05 03:01:45 UTC | 2021-08-05 20:15:44 UTC | 4       |
+| 13 | Arkham Asylum  | The first game set the tone.               | 2021-08-05 03:02:45 UTC | 2021-08-05 03:02:45 UTC |         |
+| 14 | Arkham Island  | Episode two: building a legend.            | 2021-08-05 03:04:36 UTC | 2021-08-05 03:04:36 UTC |         |
+| 15 | Arkham Island  | The batmobile is the star.                 | 2021-08-05 03:05:09 UTC | 2021-08-05 03:05:09 UTC |         |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+15 rows in set
+2.3.1 :049 > p = Post.find(13)
+  Post Load (1.9ms)  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 13]]
++----+---------------+------------------------------+-------------------------+-------------------------+---------+
+| id | title         | content                      | created_at              | updated_at              | blog_id |
++----+---------------+------------------------------+-------------------------+-------------------------+---------+
+| 13 | Arkham Asylum | The first game set the tone. | 2021-08-05 03:02:45 UTC | 2021-08-05 03:02:45 UTC |         |
++----+---------------+------------------------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :050 > p.blog = Blog.fifth
+  Blog Load (2.4ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1 OFFSET 4
++----+-------------+---------------------------------------+-------------------------+-------------------------+
+| id | name        | description                           | created_at              | updated_at              |
++----+-------------+---------------------------------------+-------------------------+-------------------------+
+| 5  | Batman Blog | The best Batman: Arkham trilogy Blog. | 2021-08-04 22:44:38 UTC | 2021-08-04 22:44:38 UTC |
++----+-------------+---------------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :051 > p.save
+   (0.1ms)  begin transaction
+  SQL (4.0ms)  UPDATE "posts" SET "blog_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["blog_id", 5], ["updated_at", "2021-08-05 20:16:21.909893"], ["id", 13]]
+   (6.1ms)  commit transaction
+ => true
+2.3.1 :052 > Post.all
+  Post Load (2.6ms)  SELECT "posts".* FROM "posts"
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| id | title          | content                                    | created_at              | updated_at              | blog_id |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| 1  | WOW: Dwarves   | Dwarves rule, elves drool.                 | 2021-08-05 02:53:41 UTC | 2021-08-05 19:59:19 UTC | 1       |
+| 2  | WOW: Elves     | Dwarves are the worst.                     | 2021-08-05 02:54:37 UTC | 2021-08-05 20:00:04 UTC | 1       |
+| 3  | WOW: Expansion | Whats next?                                | 2021-08-05 02:55:25 UTC | 2021-08-05 20:00:29 UTC | 1       |
+| 4  | SC2: Protoss   | Got pylons?                                | 2021-08-05 02:56:25 UTC | 2021-08-05 20:02:59 UTC | 2       |
+| 5  | SC2: Zerg      | Is creep really creepy?                    | 2021-08-05 02:56:48 UTC | 2021-08-05 20:03:33 UTC | 2       |
+| 6  | SC2: Terrans   | Which expansion is best for each building? | 2021-08-05 02:57:35 UTC | 2021-08-05 20:12:43 UTC | 2       |
+| 7  | Halo: CE       | Was the first Halo the best Halo?          | 2021-08-05 02:58:23 UTC | 2021-08-05 20:14:05 UTC | 3       |
+| 8  | Halo: 2        | Matchmaking at it's finest.                | 2021-08-05 02:58:56 UTC | 2021-08-05 20:14:26 UTC | 3       |
+| 9  | Halo: 3        | Is the Arbiter really a hero?              | 2021-08-05 02:59:23 UTC | 2021-08-05 20:14:44 UTC | 3       |
+| 10 | Life of Link   | Why does everyone call me Zelda?           | 2021-08-05 03:00:54 UTC | 2021-08-05 20:15:12 UTC | 4       |
+| 11 | Life of Link   | Was Link to the Past the best game?        | 2021-08-05 03:01:30 UTC | 2021-08-05 20:15:30 UTC | 4       |
+| 12 | Life of Link   | Can you play the ocarina?                  | 2021-08-05 03:01:45 UTC | 2021-08-05 20:15:44 UTC | 4       |
+| 13 | Arkham Asylum  | The first game set the tone.               | 2021-08-05 03:02:45 UTC | 2021-08-05 20:16:21 UTC | 5       |
+| 14 | Arkham Island  | Episode two: building a legend.            | 2021-08-05 03:04:36 UTC | 2021-08-05 03:04:36 UTC |         |
+| 15 | Arkham Island  | The batmobile is the star.                 | 2021-08-05 03:05:09 UTC | 2021-08-05 03:05:09 UTC |         |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+15 rows in set
+2.3.1 :053 > p = Post.find(14)
+  Post Load (1.9ms)  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 14]]
++----+---------------+---------------------------------+-------------------------+-------------------------+---------+
+| id | title         | content                         | created_at              | updated_at              | blog_id |
++----+---------------+---------------------------------+-------------------------+-------------------------+---------+
+| 14 | Arkham Island | Episode two: building a legend. | 2021-08-05 03:04:36 UTC | 2021-08-05 03:04:36 UTC |         |
++----+---------------+---------------------------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :054 > p.blog = Blog.fifth
+  Blog Load (1.4ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1 OFFSET 4
++----+-------------+---------------------------------------+-------------------------+-------------------------+
+| id | name        | description                           | created_at              | updated_at              |
++----+-------------+---------------------------------------+-------------------------+-------------------------+
+| 5  | Batman Blog | The best Batman: Arkham trilogy Blog. | 2021-08-04 22:44:38 UTC | 2021-08-04 22:44:38 UTC |
++----+-------------+---------------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :055 > p.save
+   (0.1ms)  begin transaction
+  SQL (6.6ms)  UPDATE "posts" SET "blog_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["blog_id", 5], ["updated_at", "2021-08-05 20:16:43.706298"], ["id", 14]]
+   (7.9ms)  commit transaction
+ => true
+2.3.1 :056 > p = Post.find(15)
+  Post Load (2.1ms)  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 15]]
++----+---------------+----------------------------+-------------------------+-------------------------+---------+
+| id | title         | content                    | created_at              | updated_at              | blog_id |
++----+---------------+----------------------------+-------------------------+-------------------------+---------+
+| 15 | Arkham Island | The batmobile is the star. | 2021-08-05 03:05:09 UTC | 2021-08-05 03:05:09 UTC |         |
++----+---------------+----------------------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :057 > p.blog = Blog.fifth
+  Blog Load (2.4ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1 OFFSET 4
++----+-------------+---------------------------------------+-------------------------+-------------------------+
+| id | name        | description                           | created_at              | updated_at              |
++----+-------------+---------------------------------------+-------------------------+-------------------------+
+| 5  | Batman Blog | The best Batman: Arkham trilogy Blog. | 2021-08-04 22:44:38 UTC | 2021-08-04 22:44:38 UTC |
++----+-------------+---------------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :058 > p.save
+   (0.1ms)  begin transaction
+  SQL (3.9ms)  UPDATE "posts" SET "blog_id" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["blog_id", 5], ["updated_at", "2021-08-05 20:17:01.713204"], ["id", 15]]
+   (5.6ms)  commit transaction
+ => true
+2.3.1 :059 > Post.all
+  Post Load (2.3ms)  SELECT "posts".* FROM "posts"
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| id | title          | content                                    | created_at              | updated_at              | blog_id |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| 1  | WOW: Dwarves   | Dwarves rule, elves drool.                 | 2021-08-05 02:53:41 UTC | 2021-08-05 19:59:19 UTC | 1       |
+| 2  | WOW: Elves     | Dwarves are the worst.                     | 2021-08-05 02:54:37 UTC | 2021-08-05 20:00:04 UTC | 1       |
+| 3  | WOW: Expansion | Whats next?                                | 2021-08-05 02:55:25 UTC | 2021-08-05 20:00:29 UTC | 1       |
+| 4  | SC2: Protoss   | Got pylons?                                | 2021-08-05 02:56:25 UTC | 2021-08-05 20:02:59 UTC | 2       |
+| 5  | SC2: Zerg      | Is creep really creepy?                    | 2021-08-05 02:56:48 UTC | 2021-08-05 20:03:33 UTC | 2       |
+| 6  | SC2: Terrans   | Which expansion is best for each building? | 2021-08-05 02:57:35 UTC | 2021-08-05 20:12:43 UTC | 2       |
+| 7  | Halo: CE       | Was the first Halo the best Halo?          | 2021-08-05 02:58:23 UTC | 2021-08-05 20:14:05 UTC | 3       |
+| 8  | Halo: 2        | Matchmaking at it's finest.                | 2021-08-05 02:58:56 UTC | 2021-08-05 20:14:26 UTC | 3       |
+| 9  | Halo: 3        | Is the Arbiter really a hero?              | 2021-08-05 02:59:23 UTC | 2021-08-05 20:14:44 UTC | 3       |
+| 10 | Life of Link   | Why does everyone call me Zelda?           | 2021-08-05 03:00:54 UTC | 2021-08-05 20:15:12 UTC | 4       |
+| 11 | Life of Link   | Was Link to the Past the best game?        | 2021-08-05 03:01:30 UTC | 2021-08-05 20:15:30 UTC | 4       |
+| 12 | Life of Link   | Can you play the ocarina?                  | 2021-08-05 03:01:45 UTC | 2021-08-05 20:15:44 UTC | 4       |
+| 13 | Arkham Asylum  | The first game set the tone.               | 2021-08-05 03:02:45 UTC | 2021-08-05 20:16:21 UTC | 5       |
+| 14 | Arkham Island  | Episode two: building a legend.            | 2021-08-05 03:04:36 UTC | 2021-08-05 20:16:43 UTC | 5       |
+| 15 | Arkham Island  | The batmobile is the star.                 | 2021-08-05 03:05:09 UTC | 2021-08-05 20:17:01 UTC | 5       |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+15 rows in set
+2.3.1 :060 > Messages.all
+NameError: uninitialized constant Messages
+        from (irb):60
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/console.rb:110:in `start'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/console.rb:9:in `start'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/commands_tasks.rb:68:in `console'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands.rb:17:in `<top (required)>'
+        from /vagrant/oop/blogs_posts_messages/blogs/bin/rails:9:in `<top (required)>'
+        from /home/vagrant/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+        from /home/vagrant/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+        from -e:1:in `<main>'
+2.3.1 :061 > Message.all
+  Message Load (2.2ms)  SELECT "messages".* FROM "messages"
++----+---------+---------------------------------+-------------------------+-------------------------+---------+
+| id | author  | message                         | created_at              | updated_at              | post_id |
++----+---------+---------------------------------+-------------------------+-------------------------+---------+
+| 1  | Steve   | Can dwarves be clean shaven?    | 2021-08-05 03:26:04 UTC | 2021-08-05 19:30:29 UTC | 1       |
+| 2  | Carla   | I'm an elf, can I love a dwarf? | 2021-08-05 03:26:47 UTC | 2021-08-05 19:49:35 UTC | 1       |
+| 3  | Gandalf | Thou shall not pass             | 2021-08-05 03:27:15 UTC | 2021-08-05 19:50:11 UTC | 1       |
++----+---------+---------------------------------+-------------------------+-------------------------+---------+
+3 rows in set
+2.3.1 :062 > Post.blog_id.first
+NoMethodError: undefined method `blog_id' for #<Class:0x00000002ad1ba8>
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/dynamic_matchers.rb:26:in `method_missing'
+        from (irb):62
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/console.rb:110:in `start'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/console.rb:9:in `start'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/commands_tasks.rb:68:in `console'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands.rb:17:in `<top (required)>'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:274:in `require'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:274:in `block in require'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:240:in `load_dependency'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:274:in `require'
+        from /vagrant/oop/blogs_posts_messages/blogs/bin/rails:9:in `<top (required)>'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:268:in `load'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:268:in `block in load'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:240:in `load_dependency'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:268:in `load'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/commands/rails.rb:6:in `call'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/command_wrapper.rb:38:in `call'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:201:in `block in serve'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:171:in `fork'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:171:in `serve'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:141:in `block in run'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:135:in `loop'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:135:in `run'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application/boot.rb:19:in `<top (required)>'
+        from /home/vagrant/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+        from /home/vagrant/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+        from -e:1:in `<main>'
+2.3.1 :063 > Blog.second.posts
+  Blog Load (2.2ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" ASC LIMIT 1 OFFSET 1
+  Post Load (1.4ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 2]]
++----+--------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| id | title        | content                                    | created_at              | updated_at              | blog_id |
++----+--------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| 4  | SC2: Protoss | Got pylons?                                | 2021-08-05 02:56:25 UTC | 2021-08-05 20:02:59 UTC | 2       |
+| 5  | SC2: Zerg    | Is creep really creepy?                    | 2021-08-05 02:56:48 UTC | 2021-08-05 20:03:33 UTC | 2       |
+| 6  | SC2: Terrans | Which expansion is best for each building? | 2021-08-05 02:57:35 UTC | 2021-08-05 20:12:43 UTC | 2       |
++----+--------------+--------------------------------------------+-------------------------+-------------------------+---------+
+3 rows in set
+2.3.1 :064 > Blog.last.posts
+  Blog Load (2.2ms)  SELECT  "blogs".* FROM "blogs"  ORDER BY "blogs"."id" DESC LIMIT 1
+  Post Load (1.6ms)  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = ?  [["blog_id", 5]]
++----+---------------+---------------------------------+-------------------------+-------------------------+---------+
+| id | title         | content                         | created_at              | updated_at              | blog_id |
++----+---------------+---------------------------------+-------------------------+-------------------------+---------+
+| 13 | Arkham Asylum | The first game set the tone.    | 2021-08-05 03:02:45 UTC | 2021-08-05 20:16:21 UTC | 5       |
+| 14 | Arkham Island | Episode two: building a legend. | 2021-08-05 03:04:36 UTC | 2021-08-05 20:16:43 UTC | 5       |
+| 15 | Arkham Island | The batmobile is the star.      | 2021-08-05 03:05:09 UTC | 2021-08-05 20:17:01 UTC | 5       |
++----+---------------+---------------------------------+-------------------------+-------------------------+---------+
+3 rows in set
+2.3.1 :065 > post = Post.find(14)
+  Post Load (2.5ms)  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 14]]
++----+---------------+---------------------------------+-------------------------+-------------------------+---------+
+| id | title         | content                         | created_at              | updated_at              | blog_id |
++----+---------------+---------------------------------+-------------------------+-------------------------+---------+
+| 14 | Arkham Island | Episode two: building a legend. | 2021-08-05 03:04:36 UTC | 2021-08-05 20:16:43 UTC | 5       |
++----+---------------+---------------------------------+-------------------------+-------------------------+---------+
+1 row in set
+2.3.1 :066 > post.title = "Arkham City"
+ => "Arkham City"
+2.3.1 :067 > post.save
+   (0.1ms)  begin transaction
+  SQL (4.2ms)  UPDATE "posts" SET "title" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["title", "Arkham City"], ["updated_at", "2021-08-05 20:32:48.111823"], ["id", 14]]
+   (2.2ms)  commit transaction
+ => true
+2.3.1 :068 > Post.all
+  Post Load (2.8ms)  SELECT "posts".* FROM "posts"
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| id | title          | content                                    | created_at              | updated_at              | blog_id |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+| 1  | WOW: Dwarves   | Dwarves rule, elves drool.                 | 2021-08-05 02:53:41 UTC | 2021-08-05 19:59:19 UTC | 1       |
+| 2  | WOW: Elves     | Dwarves are the worst.                     | 2021-08-05 02:54:37 UTC | 2021-08-05 20:00:04 UTC | 1       |
+| 3  | WOW: Expansion | Whats next?                                | 2021-08-05 02:55:25 UTC | 2021-08-05 20:00:29 UTC | 1       |
+| 4  | SC2: Protoss   | Got pylons?                                | 2021-08-05 02:56:25 UTC | 2021-08-05 20:02:59 UTC | 2       |
+| 5  | SC2: Zerg      | Is creep really creepy?                    | 2021-08-05 02:56:48 UTC | 2021-08-05 20:03:33 UTC | 2       |
+| 6  | SC2: Terrans   | Which expansion is best for each building? | 2021-08-05 02:57:35 UTC | 2021-08-05 20:12:43 UTC | 2       |
+| 7  | Halo: CE       | Was the first Halo the best Halo?          | 2021-08-05 02:58:23 UTC | 2021-08-05 20:14:05 UTC | 3       |
+| 8  | Halo: 2        | Matchmaking at it's finest.                | 2021-08-05 02:58:56 UTC | 2021-08-05 20:14:26 UTC | 3       |
+| 9  | Halo: 3        | Is the Arbiter really a hero?              | 2021-08-05 02:59:23 UTC | 2021-08-05 20:14:44 UTC | 3       |
+| 10 | Life of Link   | Why does everyone call me Zelda?           | 2021-08-05 03:00:54 UTC | 2021-08-05 20:15:12 UTC | 4       |
+| 11 | Life of Link   | Was Link to the Past the best game?        | 2021-08-05 03:01:30 UTC | 2021-08-05 20:15:30 UTC | 4       |
+| 12 | Life of Link   | Can you play the ocarina?                  | 2021-08-05 03:01:45 UTC | 2021-08-05 20:15:44 UTC | 4       |
+| 13 | Arkham Asylum  | The first game set the tone.               | 2021-08-05 03:02:45 UTC | 2021-08-05 20:16:21 UTC | 5       |
+| 14 | Arkham City    | Episode two: building a legend.            | 2021-08-05 03:04:36 UTC | 2021-08-05 20:32:48 UTC | 5       |
+| 15 | Arkham Island  | The batmobile is the star.                 | 2021-08-05 03:05:09 UTC | 2021-08-05 20:17:01 UTC | 5       |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+---------+
+15 rows in set
+2.3.1 :069 >

@@ -11,33 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210805195552) do
+ActiveRecord::Schema.define(version: 20210805184212) do
 
-  create_table "blogs", force: :cascade do |t|
+  create_table "dojos", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.string   "author"
-    t.string   "message"
+    t.string   "city"
+    t.string   "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "post_id"
   end
 
-  add_index "messages", ["post_id"], name: "index_messages_on_post_id"
-
-  create_table "posts", force: :cascade do |t|
-    t.string   "title"
-    t.string   "content"
+  create_table "ninjas", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "dojo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "blog_id"
   end
 
-  add_index "posts", ["blog_id"], name: "index_posts_on_blog_id"
+  add_index "ninjas", ["dojo_id"], name: "index_ninjas_on_dojo_id"
 
 end
