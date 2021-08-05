@@ -250,3 +250,42 @@ Did you mean?  first!
   Dojo Load (1.8ms)  SELECT  "dojos".* FROM "dojos"  ORDER BY "dojos"."id" ASC LIMIT 1 OFFSET 1
 NoMethodError: undefined method `first_name' for #<Dojo:0x000000039f5cd8>
 Did you mean?  reset_name!
+
+2.3.1 :016 > reload!
+Reloading...
+ => true
+2.3.1 :017 > dojo = Dojo.second.destroy
+  Dojo Load (0.8ms)  SELECT  "dojos".* FROM "dojos"  ORDER BY "dojos"."id" ASC LIMIT 1 OFFSET 1
+   (0.0ms)  begin transaction
+  Ninja Load (0.2ms)  SELECT "ninjas".* FROM "ninjas" WHERE "ninjas"."dojo_id" = ?  [["dojo_id", 2]]
+  SQL (3.0ms)  DELETE FROM "ninjas" WHERE "ninjas"."id" = ?  [["id", 4]]
+  SQL (0.0ms)  DELETE FROM "ninjas" WHERE "ninjas"."id" = ?  [["id", 5]]
+  SQL (0.0ms)  DELETE FROM "ninjas" WHERE "ninjas"."id" = ?  [["id", 6]]
+  SQL (0.3ms)  DELETE FROM "dojos" WHERE "dojos"."id" = ?  [["id", 2]]
+   (229.0ms)  commit transaction
++----+--------------------+---------+-------+-------------------------+-------------------------+
+| id | name               | city    | state | created_at              | updated_at              |
++----+--------------------+---------+-------+-------------------------+-------------------------+
+| 2  | CodingDojo Seattle | Seattle | WA    | 2021-08-05 18:57:01 UTC | 2021-08-05 18:57:01 UTC |
++----+--------------------+---------+-------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :018 > dojo.save
+   (0.1ms)  begin transaction
+   (0.1ms)  commit transaction
+ => true
+2.3.1 :019 > Ninjas.all
+NameError: uninitialized constant Ninjas
+2.3.1 :020 > Ninja.all
+  Ninja Load (1.9ms)  SELECT "ninjas".* FROM "ninjas"
++----+------------+-----------+---------+-------------------------+-------------------------+
+| id | first_name | last_name | dojo_id | created_at              | updated_at              |
++----+------------+-----------+---------+-------------------------+-------------------------+
+| 1  | Larry      | Stooge    | 1       | 2021-08-05 19:13:20 UTC | 2021-08-05 19:13:20 UTC |
+| 2  | Curly      | Stooge    | 1       | 2021-08-05 19:13:34 UTC | 2021-08-05 19:13:34 UTC |
+| 3  | Moe        | Stooge    | 1       | 2021-08-05 19:13:44 UTC | 2021-08-05 19:13:44 UTC |
+| 7  | Augustus   | Wynne     | 3       | 2021-08-05 20:58:43 UTC | 2021-08-05 20:58:43 UTC |
+| 8  | Bowie      | Wynne     | 3       | 2021-08-05 20:58:54 UTC | 2021-08-05 20:58:54 UTC |
+| 9  | Bella      | Wynne     | 3       | 2021-08-05 20:59:05 UTC | 2021-08-05 20:59:05 UTC |
++----+------------+-----------+---------+-------------------------+-------------------------+
+6 rows in set
+2.3.1 :021 >
