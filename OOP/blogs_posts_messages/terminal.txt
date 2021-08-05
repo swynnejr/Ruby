@@ -1,0 +1,382 @@
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/oop/blogs_posts_messages/blogs$ rails c
+Running via Spring preloader in process 15730
+Loading development environment (Rails 4.2.7)
+2.3.1 :001 > blog1 = Blog.new
+ => #<Blog id: nil, name: nil, description: nil, created_at: nil, updated_at: nil>
+2.3.1 :002 > blog1.valid?
+ => false
+2.3.1 :003 > reload!
+Reloading...
+ => true
+2.3.1 :004 > Hirb.enable
+ => true
+2.3.1 :005 > Blog.create(name: "WOW Blog", description: "Really great WOW Blog.")
+   (0.1ms)  begin transaction
+  SQL (4.8ms)  INSERT INTO "blogs" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "WOW Blog"], ["description", "Really great WOW Blog."], ["created_at", "2021-08-04 22:41:59.679414"], ["updated_at", "2021-08-04 22:41:59.679414"]]
+   (7.2ms)  commit transaction
++----+----------+------------------------+-------------------------+-------------------------+
+| id | name     | description            | created_at              | updated_at              |
++----+----------+------------------------+-------------------------+-------------------------+
+| 1  | WOW Blog | Really great WOW Blog. | 2021-08-04 22:41:59 UTC | 2021-08-04 22:41:59 UTC |
++----+----------+------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :006 > Blog.create(name: "SC2 Blog", description: "Really great Starcraft 2 Blog.")
+   (0.1ms)  begin transaction
+  SQL (3.3ms)  INSERT INTO "blogs" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "SC2 Blog"], ["description", "Really great Starcraft 2 Blog."], ["created_at", "2021-08-04 22:42:33.765337"], ["updated_at", "2021-08-04 22:42:33.765337"]]
+   (1.8ms)  commit transaction
++----+----------+--------------------------------+-------------------------+-------------------------+
+| id | name     | description                    | created_at              | updated_at              |
++----+----------+--------------------------------+-------------------------+-------------------------+
+| 2  | SC2 Blog | Really great Starcraft 2 Blog. | 2021-08-04 22:42:33 UTC | 2021-08-04 22:42:33 UTC |
++----+----------+--------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :007 > Blog.create(name: "Halo Blog", description: "Super awesome Halo Blog.")
+   (0.1ms)  begin transaction
+  SQL (5.2ms)  INSERT INTO "blogs" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Halo Blog"], ["description", "Super awesome Halo Blog."], ["created_at", "2021-08-04 22:43:10.096064"], ["updated_at", "2021-08-04 22:43:10.096064"]]
+   (6.0ms)  commit transaction
++----+-----------+--------------------------+-------------------------+-------------------------+
+| id | name      | description              | created_at              | updated_at              |
++----+-----------+--------------------------+-------------------------+-------------------------+
+| 3  | Halo Blog | Super awesome Halo Blog. | 2021-08-04 22:43:10 UTC | 2021-08-04 22:43:10 UTC |
++----+-----------+--------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :008 > Blog.create(name: "Zelda Blog", description: "Incredible Legend of Zelda Blog.")
+   (0.1ms)  begin transaction
+  SQL (4.7ms)  INSERT INTO "blogs" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Zelda Blog"], ["description", "Incredible Legend of Zelda Blog."], ["created_at", "2021-08-04 22:43:58.943340"], ["updated_at", "2021-08-04 22:43:58.943340"]]
+   (5.9ms)  commit transaction
++----+------------+----------------------------------+-------------------------+-------------------------+
+| id | name       | description                      | created_at              | updated_at              |
++----+------------+----------------------------------+-------------------------+-------------------------+
+| 4  | Zelda Blog | Incredible Legend of Zelda Blog. | 2021-08-04 22:43:58 UTC | 2021-08-04 22:43:58 UTC |
++----+------------+----------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :009 > Blog.create(name: "Batman Blog", description: "The best Batman: Arkham trilogy Blog.")
+   (0.1ms)  begin transaction
+  SQL (5.9ms)  INSERT INTO "blogs" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Batman Blog"], ["description", "The best Batman: Arkham trilogy Blog."], ["created_at", "2021-08-04 22:44:38.565741"], ["updated_at", "2021-08-04 22:44:38.565741"]]
+   (7.4ms)  commit transaction
++----+-------------+---------------------------------------+-------------------------+-------------------------+
+| id | name        | description                           | created_at              | updated_at              |
++----+-------------+---------------------------------------+-------------------------+-------------------------+
+| 5  | Batman Blog | The best Batman: Arkham trilogy Blog. | 2021-08-04 22:44:38 UTC | 2021-08-04 22:44:38 UTC |
++----+-------------+---------------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :010 > Post.create(blog_id: 1, title: "WOW: Dwarves", content: "Dwarves rule, elves drool.")
+ActiveRecord::UnknownAttributeError: unknown attribute 'blog_id' for Post.
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/attribute_assignment.rb:59:in `rescue in _assign_attribute'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/attribute_assignment.rb:54:in `_assign_attribute'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/attribute_assignment.rb:41:in `block in assign_attributes'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/attribute_assignment.rb:35:in `each'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/attribute_assignment.rb:35:in `assign_attributes'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/core.rb:566:in `init_attributes'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/core.rb:281:in `initialize'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/inheritance.rb:61:in `new'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/inheritance.rb:61:in `new'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/persistence.rb:33:in `create'
+        from (irb):10
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/console.rb:110:in `start'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/console.rb:9:in `start'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/commands_tasks.rb:68:in `console'        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands.rb:17:in `<top (required)>'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:274:in `require'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:274:in `block in require'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:240:in `load_dependency'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:274:in `require'
+        from /vagrant/oop/blogs_posts_messages/blogs/bin/rails:9:in `<top (required)>'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:268:in `load'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:268:in `block in load'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:240:in `load_dependency'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:268:in `load'
+        from /home/vagrant/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+        from /home/vagrant/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+        from -e:1:in `<main>'
+2.3.1 :011 > Post.create(title: "WOW: Dwarves", content: "Dwarves rule, elves drool.")
+   (0.1ms)  begin transaction
+  SQL (4.6ms)  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "WOW: Dwarves"], ["content", "Dwarves rule, elves drool."], ["created_at", "2021-08-05 02:53:41.248354"], ["updated_at", "2021-08-05 02:53:41.248354"]]
+   (2.2ms)  commit transaction
++----+--------------+----------------------------+-------------------------+-------------------------+
+| id | title        | content                    | created_at              | updated_at              |
++----+--------------+----------------------------+-------------------------+-------------------------+
+| 1  | WOW: Dwarves | Dwarves rule, elves drool. | 2021-08-05 02:53:41 UTC | 2021-08-05 02:53:41 UTC |
++----+--------------+----------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :012 > Post.create(title: "WOW: Elves", content: "Dwarves are the worst.")
+   (0.1ms)  begin transaction
+  SQL (3.9ms)  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "WOW: Elves"], ["content", "Dwarves are the worst."], ["created_at", "2021-08-05 02:54:37.317009"], ["updated_at", "2021-08-05 02:54:37.317009"]]
+   (6.9ms)  commit transaction
++----+------------+------------------------+-------------------------+-------------------------+
+| id | title      | content                | created_at              | updated_at              |
++----+------------+------------------------+-------------------------+-------------------------+
+| 2  | WOW: Elves | Dwarves are the worst. | 2021-08-05 02:54:37 UTC | 2021-08-05 02:54:37 UTC |
++----+------------+------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :013 > Post.create(title: "WOW: Expansion", content: "Whats next?")
+   (0.1ms)  begin transaction
+  SQL (4.4ms)  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "WOW: Expansion"], ["content", "Whats next?"], ["created_at", "2021-08-05 02:55:25.278077"], ["updated_at", "2021-08-05 02:55:25.278077"]]
+   (6.0ms)  commit transaction
++----+----------------+-------------+-------------------------+-------------------------+
+| id | title          | content     | created_at              | updated_at              |
++----+----------------+-------------+-------------------------+-------------------------+
+| 3  | WOW: Expansion | Whats next? | 2021-08-05 02:55:25 UTC | 2021-08-05 02:55:25 UTC |
++----+----------------+-------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :014 > Post.create(title: "SC2: Protoss", content: "Got pylons?")
+   (0.1ms)  begin transaction
+  SQL (4.3ms)  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "SC2: Protoss"], ["content", "Got pylons?"], ["created_at", "2021-08-05 02:56:25.122759"], ["updated_at", "2021-08-05 02:56:25.122759"]]
+   (6.8ms)  commit transaction
++----+--------------+-------------+-------------------------+-------------------------+
+| id | title        | content     | created_at              | updated_at              |
++----+--------------+-------------+-------------------------+-------------------------+
+| 4  | SC2: Protoss | Got pylons? | 2021-08-05 02:56:25 UTC | 2021-08-05 02:56:25 UTC |
++----+--------------+-------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :015 > Post.create(title: "SC2: Zerg", content: "Is creep really creepy?")
+   (0.1ms)  begin transaction
+  SQL (5.8ms)  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "SC2: Zerg"], ["content", "Is creep really creepy?"], ["created_at", "2021-08-05 02:56:48.679705"], ["updated_at", "2021-08-05 02:56:48.679705"]]
+   (6.4ms)  commit transaction
++----+-----------+-------------------------+-------------------------+-------------------------+
+| id | title     | content                 | created_at              | updated_at              |
++----+-----------+-------------------------+-------------------------+-------------------------+
+| 5  | SC2: Zerg | Is creep really creepy? | 2021-08-05 02:56:48 UTC | 2021-08-05 02:56:48 UTC |
++----+-----------+-------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :016 > Post.create(title: "SC2: Terrans", content: "Which expansion is best for each building?")
+   (0.1ms)  begin transaction
+  SQL (4.1ms)  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "SC2: Terrans"], ["content", "Which expansion is best for each building?"], ["created_at", "2021-08-05 02:57:35.672507"], ["updated_at", "2021-08-05 02:57:35.672507"]]
+   (7.9ms)  commit transaction
++----+--------------+--------------------------------------------+-------------------------+-------------------------+
+| id | title        | content                                    | created_at              | updated_at              |
++----+--------------+--------------------------------------------+-------------------------+-------------------------+
+| 6  | SC2: Terrans | Which expansion is best for each building? | 2021-08-05 02:57:35 UTC | 2021-08-05 02:57:35 UTC |
++----+--------------+--------------------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :017 > Post.create(title: "Halo: CE", content: "Was the first Halo the best Halo?")
+   (1.0ms)  begin transaction
+  SQL (5.2ms)  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Halo: CE"], ["content", "Was the first Halo the best Halo?"], ["created_at", "2021-08-05 02:58:23.020206"], ["updated_at", "2021-08-05 02:58:23.020206"]]
+   (6.3ms)  commit transaction
++----+----------+-----------------------------------+-------------------------+-------------------------+
+| id | title    | content                           | created_at              | updated_at              |
++----+----------+-----------------------------------+-------------------------+-------------------------+
+| 7  | Halo: CE | Was the first Halo the best Halo? | 2021-08-05 02:58:23 UTC | 2021-08-05 02:58:23 UTC |
++----+----------+-----------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :018 > Post.create(title: "Halo: 2", content: "Matchmaking at it's finest.")
+   (0.1ms)  begin transaction
+  SQL (4.2ms)  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Halo: 2"], ["content", "Matchmaking at it's finest."], ["created_at", "2021-08-05 02:58:56.824326"], ["updated_at", "2021-08-05 02:58:56.824326"]]
+   (8.5ms)  commit transaction
++----+---------+-----------------------------+-------------------------+-------------------------+
+| id | title   | content                     | created_at              | updated_at              |
++----+---------+-----------------------------+-------------------------+-------------------------+
+| 8  | Halo: 2 | Matchmaking at it's finest. | 2021-08-05 02:58:56 UTC | 2021-08-05 02:58:56 UTC |
++----+---------+-----------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :019 > Post.create(title: "Halo: 3", content: "Is the Arbiter really a hero?")
+   (0.1ms)  begin transaction
+  SQL (3.1ms)  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Halo: 3"], ["content", "Is the Arbiter really a hero?"], ["created_at", "2021-08-05 02:59:23.842760"], ["updated_at", "2021-08-05 02:59:23.842760"]]
+   (6.4ms)  commit transaction
++----+---------+-------------------------------+-------------------------+-------------------------+
+| id | title   | content                       | created_at              | updated_at              |
++----+---------+-------------------------------+-------------------------+-------------------------+
+| 9  | Halo: 3 | Is the Arbiter really a hero? | 2021-08-05 02:59:23 UTC | 2021-08-05 02:59:23 UTC |
++----+---------+-------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :020 > Post.create(title: "Life of Link", content: "Why does everyone call me Zelda?")
+   (0.1ms)  begin transaction
+  SQL (4.6ms)  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Life of Link"], ["content", "Why does everyone call me Zelda?"], ["created_at", "2021-08-05 03:00:54.999174"], ["updated_at", "2021-08-05 03:00:54.999174"]]
+   (7.5ms)  commit transaction
++----+--------------+----------------------------------+-------------------------+-------------------------+
+| id | title        | content                          | created_at              | updated_at              |
++----+--------------+----------------------------------+-------------------------+-------------------------+
+| 10 | Life of Link | Why does everyone call me Zelda? | 2021-08-05 03:00:54 UTC | 2021-08-05 03:00:54 UTC |
++----+--------------+----------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :021 > Post.create(title: "Life of Link", content: "Was Link to the Past the best game?")
+   (0.1ms)  begin transaction
+  SQL (5.9ms)  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Life of Link"], ["content", "Was Link to the Past the best game?"], ["created_at", "2021-08-05 03:01:30.122515"], ["updated_at", "2021-08-05 03:01:30.122515"]]
+   (6.1ms)  commit transaction
++----+--------------+-------------------------------------+-------------------------+-------------------------+
+| id | title        | content                             | created_at              | updated_at              |
++----+--------------+-------------------------------------+-------------------------+-------------------------+
+| 11 | Life of Link | Was Link to the Past the best game? | 2021-08-05 03:01:30 UTC | 2021-08-05 03:01:30 UTC |
++----+--------------+-------------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :022 > Post.create(title: "Life of Link", content: "Can you play the ocarina?")
+   (0.1ms)  begin transaction
+  SQL (4.2ms)  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Life of Link"], ["content", "Can you play the ocarina?"], ["created_at", "2021-08-05 03:01:45.453145"], ["updated_at", "2021-08-05 03:01:45.453145"]]
+   (6.8ms)  commit transaction
++----+--------------+---------------------------+-------------------------+-------------------------+
+| id | title        | content                   | created_at              | updated_at              |
++----+--------------+---------------------------+-------------------------+-------------------------+
+| 12 | Life of Link | Can you play the ocarina? | 2021-08-05 03:01:45 UTC | 2021-08-05 03:01:45 UTC |
++----+--------------+---------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :023 > Post.create(title: "Arkham Asylum", content: "The first game set the tone.")
+   (0.1ms)  begin transaction
+  SQL (4.7ms)  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Arkham Asylum"], ["content", "The first game set the tone."], ["created_at", "2021-08-05 03:02:45.510759"], ["updated_at", "2021-08-05 03:02:45.510759"]]
+   (6.6ms)  commit transaction
++----+---------------+------------------------------+-------------------------+-------------------------+
+| id | title         | content                      | created_at              | updated_at              |
++----+---------------+------------------------------+-------------------------+-------------------------+
+| 13 | Arkham Asylum | The first game set the tone. | 2021-08-05 03:02:45 UTC | 2021-08-05 03:02:45 UTC |
++----+---------------+------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :024 > Post.create(title: "Arkham Island", content: "Episode two: building a legend.")
+   (0.1ms)  begin transaction
+  SQL (4.4ms)  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Arkham Island"], ["content", "Episode two: building a legend."], ["created_at", "2021-08-05 03:04:36.261884"], ["updated_at", "2021-08-05 03:04:36.261884"]]
+   (7.5ms)  commit transaction
++----+---------------+---------------------------------+-------------------------+-------------------------+
+| id | title         | content                         | created_at              | updated_at              |
++----+---------------+---------------------------------+-------------------------+-------------------------+
+| 14 | Arkham Island | Episode two: building a legend. | 2021-08-05 03:04:36 UTC | 2021-08-05 03:04:36 UTC |
++----+---------------+---------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :025 > Post.create(title: "Arkham Island", content: "The batmobile is the star.")
+   (0.1ms)  begin transaction
+  SQL (4.4ms)  INSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Arkham Island"], ["content", "The batmobile is the star."], ["created_at", "2021-08-05 03:05:09.242655"], ["updated_at", "2021-08-05 03:05:09.242655"]]
+   (6.6ms)  commit transaction
++----+---------------+----------------------------+-------------------------+-------------------------+
+| id | title         | content                    | created_at              | updated_at              |
++----+---------------+----------------------------+-------------------------+-------------------------+
+| 15 | Arkham Island | The batmobile is the star. | 2021-08-05 03:05:09 UTC | 2021-08-05 03:05:09 UTC |
++----+---------------+----------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :026 > rake rb:migrate:status
+SyntaxError: (irb):26: syntax error, unexpected tLABEL
+rake rb:migrate:status
+                ^
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/console.rb:110:in `start'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/console.rb:9:in `start'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/commands_tasks.rb:68:in `console'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands.rb:17:in `<top (required)>'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:274:in `require'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:274:in `block in require'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:240:in `load_dependency'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:274:in `require'
+        from /vagrant/oop/blogs_posts_messages/blogs/bin/rails:9:in `<top (required)>'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:268:in `load'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:268:in `block in load'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:240:in `load_dependency'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:268:in `load'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/commands/rails.rb:6:in `call'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/command_wrapper.rb:38:in `call'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:201:in `block in serve'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:171:in `fork'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:171:in `serve'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:141:in `block in run'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:135:in `loop'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application.rb:135:in `run'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/spring-2.0.2/lib/spring/application/boot.rb:19:in `<top (required)>'
+        from /home/vagrant/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+        from /home/vagrant/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+        from -e:1:in `<main>'
+2.3.1 :027 > exit
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/oop/blogs_posts_messages/blogs$ rake db:migrate:status
+
+database: /vagrant/oop/blogs_posts_messages/blogs/db/development.sqlite3
+
+ Status   Migration ID    Migration Name
+--------------------------------------------------
+   up     20210804205845  Create blogs
+   up     20210804212832  Create posts
+   up     20210804212911  Create messages
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/oop/blogs_posts_messages/blogs$ rails c
+Running via Spring preloader in process 17532
+Loading development environment (Rails 4.2.7)
+2.3.1 :001 > Hirb.enable
+ => true
+2.3.1 :002 > Message.create(author: "Steve", content: "Can dwarves be clean shaven?")
+ActiveRecord::UnknownAttributeError: unknown attribute 'content' for Message.
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/attribute_assignment.rb:59:in `rescue in _assign_attribute'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/attribute_assignment.rb:54:in `_assign_attribute'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/attribute_assignment.rb:41:in `block in assign_attributes'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/attribute_assignment.rb:35:in `each'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/attribute_assignment.rb:35:in `assign_attributes'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/core.rb:566:in `init_attributes'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/core.rb:281:in `initialize'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/inheritance.rb:61:in `new'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/inheritance.rb:61:in `new'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activerecord-4.2.7/lib/active_record/persistence.rb:33:in `create'
+        from (irb):2
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/console.rb:110:in `start'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/console.rb:9:in `start'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/commands_tasks.rb:68:in `console'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/railties-4.2.7/lib/rails/commands.rb:17:in `<top (required)>'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:274:in `require'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:274:in `block in require'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:240:in `load_dependency'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:274:in `require'
+        from /vagrant/oop/blogs_posts_messages/blogs/bin/rails:9:in `<top (required)>'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:268:in `load'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:268:in `block in load'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:240:in `load_dependency'
+        from /home/vagrant/.rvm/gems/ruby-2.3.1/gems/activesupport-4.2.7/lib/active_support/dependencies.rb:268:in `load'
+        from /home/vagrant/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+        from /home/vagrant/.rvm/rubies/ruby-2.3.1/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+        from -e:1:in `<main>'
+2.3.1 :003 > Message.create(author: "Steve", message: "Can dwarves be clean shaven?")
+   (0.1ms)  begin transaction
+  SQL (3.3ms)  INSERT INTO "messages" ("author", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["author", "Steve"], ["message", "Can dwarves be clean shaven?"], ["created_at", "2021-08-05 03:26:04.034822"], ["updated_at", "2021-08-05 03:26:04.034822"]]
+   (6.4ms)  commit transaction
++----+--------+------------------------------+-------------------------+-------------------------+
+| id | author | message                      | created_at              | updated_at              |
++----+--------+------------------------------+-------------------------+-------------------------+
+| 1  | Steve  | Can dwarves be clean shaven? | 2021-08-05 03:26:04 UTC | 2021-08-05 03:26:04 UTC |
++----+--------+------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :004 > Message.create(author: "Carla", message: "I'm an elf, can I love a dwarf?")
+   (0.1ms)  begin transaction
+  SQL (3.9ms)  INSERT INTO "messages" ("author", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["author", "Carla"], ["message", "I'm an elf, can I love a dwarf?"], ["created_at", "2021-08-05 03:26:47.864095"], ["updated_at", "2021-08-05 03:26:47.864095"]]
+   (7.7ms)  commit transaction
++----+--------+---------------------------------+-------------------------+-------------------------+
+| id | author | message                         | created_at              | updated_at              |
++----+--------+---------------------------------+-------------------------+-------------------------+
+| 2  | Carla  | I'm an elf, can I love a dwarf? | 2021-08-05 03:26:47 UTC | 2021-08-05 03:26:47 UTC |
++----+--------+---------------------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :005 > Message.create(author: "Gandalf", message: "Thou shall not pass")
+   (0.1ms)  begin transaction
+  SQL (8.6ms)  INSERT INTO "messages" ("author", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["author", "Gandalf"], ["message", "Thou shall not pass"], ["created_at", "2021-08-05 03:27:15.888177"], ["updated_at", "2021-08-05 03:27:15.888177"]]
+   (5.6ms)  commit transaction
++----+---------+---------------------+-------------------------+-------------------------+
+| id | author  | message             | created_at              | updated_at              |
++----+---------+---------------------+-------------------------+-------------------------+
+| 3  | Gandalf | Thou shall not pass | 2021-08-05 03:27:15 UTC | 2021-08-05 03:27:15 UTC |
++----+---------+---------------------+-------------------------+-------------------------+
+1 row in set
+2.3.1 :006 > posts = Post.all
+  Post Load (1.5ms)  SELECT "posts".* FROM "posts"
++----+----------------+--------------------------------------------+-------------------------+-------------------------+
+| id | title          | content                                    | created_at              | updated_at              |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+
+| 1  | WOW: Dwarves   | Dwarves rule, elves drool.                 | 2021-08-05 02:53:41 UTC | 2021-08-05 02:53:41 UTC |
+| 2  | WOW: Elves     | Dwarves are the worst.                     | 2021-08-05 02:54:37 UTC | 2021-08-05 02:54:37 UTC |
+| 3  | WOW: Expansion | Whats next?                                | 2021-08-05 02:55:25 UTC | 2021-08-05 02:55:25 UTC |
+| 4  | SC2: Protoss   | Got pylons?                                | 2021-08-05 02:56:25 UTC | 2021-08-05 02:56:25 UTC |
+| 5  | SC2: Zerg      | Is creep really creepy?                    | 2021-08-05 02:56:48 UTC | 2021-08-05 02:56:48 UTC |
+| 6  | SC2: Terrans   | Which expansion is best for each building? | 2021-08-05 02:57:35 UTC | 2021-08-05 02:57:35 UTC |
+| 7  | Halo: CE       | Was the first Halo the best Halo?          | 2021-08-05 02:58:23 UTC | 2021-08-05 02:58:23 UTC |
+| 8  | Halo: 2        | Matchmaking at it's finest.                | 2021-08-05 02:58:56 UTC | 2021-08-05 02:58:56 UTC |
+| 9  | Halo: 3        | Is the Arbiter really a hero?              | 2021-08-05 02:59:23 UTC | 2021-08-05 02:59:23 UTC |
+| 10 | Life of Link   | Why does everyone call me Zelda?           | 2021-08-05 03:00:54 UTC | 2021-08-05 03:00:54 UTC |
+| 11 | Life of Link   | Was Link to the Past the best game?        | 2021-08-05 03:01:30 UTC | 2021-08-05 03:01:30 UTC |
+| 12 | Life of Link   | Can you play the ocarina?                  | 2021-08-05 03:01:45 UTC | 2021-08-05 03:01:45 UTC |
+| 13 | Arkham Asylum  | The first game set the tone.               | 2021-08-05 03:02:45 UTC | 2021-08-05 03:02:45 UTC |
+| 14 | Arkham Island  | Episode two: building a legend.            | 2021-08-05 03:04:36 UTC | 2021-08-05 03:04:36 UTC |
+| 15 | Arkham Island  | The batmobile is the star.                 | 2021-08-05 03:05:09 UTC | 2021-08-05 03:05:09 UTC |
++----+----------------+--------------------------------------------+-------------------------+-------------------------+
+15 rows in set
+2.3.1 :007 > blogs = Blog.all
+  Blog Load (0.8ms)  SELECT "blogs".* FROM "blogs"
++----+-------------+---------------------------------------+-------------------------+-------------------------+
+| id | name        | description                           | created_at              | updated_at              |
++----+-------------+---------------------------------------+-------------------------+-------------------------+
+| 1  | WOW Blog    | Really great WOW Blog.                | 2021-08-04 22:41:59 UTC | 2021-08-04 22:41:59 UTC |
+| 2  | SC2 Blog    | Really great Starcraft 2 Blog.        | 2021-08-04 22:42:33 UTC | 2021-08-04 22:42:33 UTC |
+| 3  | Halo Blog   | Super awesome Halo Blog.              | 2021-08-04 22:43:10 UTC | 2021-08-04 22:43:10 UTC |
+| 4  | Zelda Blog  | Incredible Legend of Zelda Blog.      | 2021-08-04 22:43:58 UTC | 2021-08-04 22:43:58 UTC |
+| 5  | Batman Blog | The best Batman: Arkham trilogy Blog. | 2021-08-04 22:44:38 UTC | 2021-08-04 22:44:38 UTC |
++----+-------------+---------------------------------------+-------------------------+-------------------------+
+5 rows in set
+2.3.1 :008 > exit
