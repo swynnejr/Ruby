@@ -1,0 +1,34 @@
+*** New Project ***
+1) cd coding_dojo/ruby
+2) vagrant up
+3) vagrant ssh
+** This takes us into Ubuntu/Trusty-64:~$
+4) cd /vagrant
+5) cd rails **** Or whatever subfolder your project is in
+6) rails new ***file_name***
+7) update 'gemfile'
+    -line 7: **add**, '~> 1.3.13'
+    -line 16: **add**gem 'hirb'
+    -line 17: **insert**gem 'rails-footnotes', '>= 4.0.0', '<5'
+8) bundle install
+9) rails generate rails_footnotes:install
+
+*** Build ERD ***
+
+ERD:1) rails g model * Table * * collumn:string (or whatever type of input it needs*
+ERD:2) rails db:migrate
+
+*** Create table relationships ***
+*** You have a page of notes on this ***
+******************
+
+*** Create Routes ***
+In VS Code: Go to /config/routes.ruby
+    For RESTful routing ~> **uncomment line 15**
+        change :products to :your_featured_category
+
+/vagrant/rails/your_project$ rake routes
+
+********************************
+
+/vagrant/rails/your_project$ rails c
