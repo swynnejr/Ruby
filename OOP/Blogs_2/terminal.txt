@@ -129,11 +129,41 @@ User.third.messages
 
 # 17. Retrieve all posts associated with the blog id 5 as well as who left these posts.    
 Post.joins(:user, :blog).where("blogs.id = ?", 5).select("*")
-
+*********************************************************************
+*********************************************************************
+2.3.1 :078 > Post.joins(:user, :blog).where("blogs.id = ?", 5).select("*")
+  Post Load (0.7ms)  SELECT * FROM "posts" INNER JOIN "users" ON "users"."id" = "posts"."user_id" INNER JOIN "blogs" ON "blogs"."id" = "posts"."blog_id" WHERE (blogs.id = 5)
++----+---------------+--------------+---------+---------+--------------+---------------+------------+-----------+--------------+--------+--------------+
+| id | title         | content      | blog_id | user_id | created_at   | updated_at    | first_name | last_name | email_add... | name   | description  |
++----+---------------+--------------+---------+---------+--------------+---------------+------------+-----------+--------------+--------+--------------+
+| 5  | Blog 5 rules  | I love bl... | 5       | 2       | 2021-08-0... | 2021-08-05... | Travis     | Douglass  | travis@ma... | Blog 5 | Very inte... |
+| 5  | Blog 5 is ... | Blog 5 fo... | 5       | 2       | 2021-08-0... | 2021-08-05... | Travis     | Douglass  | travis@ma... | Blog 5 | Very inte... |
+| 5  | Blog 5!       | Blog 5 is... | 5       | 2       | 2021-08-0... | 2021-08-05... | Travis     | Douglass  | travis@ma... | Blog 5 | Very inte... |
+| 5  | Blog 5 for... | I read th... | 5       | 2       | 2021-08-0... | 2021-08-05... | Travis     | Douglass  | travis@ma... | Blog 5 | Very inte... |
+| 5  | Blog 5 x 5    | I read th... | 5       | 2       | 2021-08-0... | 2021-08-05... | Travis     | Douglass  | travis@ma... | Blog 5 | Very inte... |
+| 5  | Blog 5 is ... | I read th... | 5       | 3       | 2021-08-0... | 2021-08-05... | Chase      | Conway    | chase@mai... | Blog 5 | Very inte... |
++----+---------------+--------------+---------+---------+--------------+---------------+------------+-----------+--------------+--------+--------------+
+6 rows in set
+**********************************************************************
+**********************************************************************
 # 18. Retrieve all messages associated with the blog id 5 along with all the user information of those who left the messages
 # In this problem, we need to do a subquery
 Message.joins(:user).where(post: Blog.find(5).posts).select("*")
-
+**********************************************************************
+**********************************************************************
+2.3.1 :079 > Message.joins(:user).where(post: Blog.find(5).posts).select("*")
+  Blog Load (1.9ms)  SELECT  "blogs".* FROM "blogs" WHERE "blogs"."id" = ? LIMIT 1  [["id", 5]]
+  Message Load (1.6ms)  SELECT * FROM "messages" INNER JOIN "users" ON "users"."id" = "messages"."user_id" WHERE "messages"."post_id" IN (SELECT "posts"."id" FROM "posts" WHERE "posts"."blog_id" = ?)  [["blog_id", 5]]
++----+--------+---------------------+---------+---------+-------------------------+-------------------------+------------+-----------+---------------+
+| id | author | message             | post_id | user_id | created_at              | updated_at              | first_name | last_name | email_address |
++----+--------+---------------------+---------+---------+-------------------------+-------------------------+------------+-----------+---------------+
+| 4  | User 4 | I can't read.       | 13      | 4       | 2021-08-05 23:10:52 UTC | 2021-08-05 23:10:52 UTC | Alex       | Sahliyeh  | alex@mail.com |
+| 4  | User 4 | Or write...         | 13      | 4       | 2021-08-05 23:10:52 UTC | 2021-08-05 23:10:52 UTC | Alex       | Sahliyeh  | alex@mail.com |
+| 4  | User 4 | I use talk to text. | 13      | 4       | 2021-08-05 23:10:52 UTC | 2021-08-05 23:10:52 UTC | Alex       | Sahliyeh  | alex@mail.com |
++----+--------+---------------------+---------+---------+-------------------------+-------------------------+------------+-----------+---------------+
+3 rows in set
+***********************************************************************************
+***********************************************************************************
 # 19. Grab all user information of those that own the first blog (make this work by allowing Blog.first.owners to work).
 Blog.first.users
 
