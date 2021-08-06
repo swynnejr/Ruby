@@ -1,16 +1,18 @@
-class MathDojo(num1, num2)
+class MathDojo
+    attr_reader :result
     def initialize
-        @num1 = num1
-        @num2 = num2
+        @result = 0
     end
-    def add
-        sum = num1 + num2
-        puts sum
+    def add(*arguments)
+        @result += arguments.flatten.reduce(0, :+)
+        self
     end
-    def subtract
-        minus = num1 - num2
-        puts minus
+    def subtract(*arguments)
+        @result -= arguments.flatten.reduce(0, :+)
+        self
     end
 end
 challenge1 = MathDojo.new.add(2).add(2, 5).subtract(3, 2).result # => 4
-# challenge2 = MathDojo.new.add(1).add([3, 5, 7, 8], [2, 4.3, 1.25]).subtract([2,3], [1.1, 2.3]).result # => 23.15
+challenge2 = MathDojo.new.add(1).add([3, 5, 7, 8], [2, 4.3, 1.25]).subtract([2,3], [1.1, 2.3]).result # => 23.15
+puts challenge1
+puts challenge2
