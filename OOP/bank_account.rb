@@ -76,4 +76,8 @@ class BankAccount
             rng = Random.new
             @account_number = rng.rand(1000..10000)
         end
+    # private
+    #     def create_account
+    #         Array.new(10).map { rand(1..9) }.join
+    #     end
 end
