@@ -1,0 +1,27 @@
+class UsersController < ApplicationController
+  def index
+    render json: User.all
+  end
+
+  def new
+
+  end
+
+  def one_user
+  end
+
+  def edit
+  end
+
+  def create
+    puts params[:user]
+    User.create(name: params[:user][:name])
+    redirect_to "/users"
+  end
+
+<h1>New User:</h1>
+<form action='/users/' method='POST'>
+  <input type="text" name='user[name]' placeholder='name'><br>
+  <input type="submit" value="Create">
+</form>
+<p>Find me in app/views/users/new.html.erb</p>
