@@ -1,0 +1,19 @@
+<h1>Welcome my ninja! Submit your info below</h1>
+<form action='' method='POST'>
+    Name: <input type="text" name='ninja[name]' placeholder='name'><br>
+    Location: <select name="ninja[location]" id="location">
+        <option value="Mountain View">Mountain View</option>
+        <option value="Dallas">Dallas</option>
+        <option value="Chicago">Chicago</option>
+        <option value="Boise">Boise</option></select><br>
+    Language: <select name="ninja[language]" id="ninja[language]">
+        <option value="Python">Python</option>
+        <option value="Ruby">Ruby</option>
+        <option value="HTML">HTML</option>
+        <option value="CSS">CSS</option></select><br>
+    Comments: <textarea id="comment" name="ninja[comment]" rows="4" cols="30"></textarea>
+    <input type="submit" value="Create">
+</form>
+
+
+<p>Find me in app/views/welcome/index.html.erb</p>
