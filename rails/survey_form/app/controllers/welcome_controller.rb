@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+  @@counter = 0
   def index
   end
 
@@ -8,6 +9,7 @@ class WelcomeController < ApplicationController
   end
   
   def results
+    @@counter += 1
     @show_ninja = Ninja.last
   end
 
