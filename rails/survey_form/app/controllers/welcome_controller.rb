@@ -10,6 +10,7 @@ class WelcomeController < ApplicationController
   
   def results
     @@counter += 1
+    flash[:notice] = "You are Ninja #{@@counter}"
     @show_ninja = Ninja.last
   end
 
