@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  get 'dojo/index'
+  # get 'dojo/index'
 
-  get 'dojo/create'
+  # get 'dojo/create'
 
-  get 'dojo/new'
+  # get 'dojo/new'
 
-  get 'dojo/edit'
+  # get 'dojo/edit'
 
-  get 'dojo/show'
+  # get 'dojo/show'
 
-  get 'dojo/update'
+  # get 'dojo/update'
 
-  get 'dojo/destroy'
+  # get 'dojo/destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
