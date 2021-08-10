@@ -1,32 +1,18 @@
 Rails.application.routes.draw do
-  get 'times/counter'
+  get 'games/index'
 
-  get 'times/restart'
-
-  get 'welcome/index'
-
-  get 'say/hello_dojo'
-
-  get 'say/hello'
-
-  get 'say/hello_joe'
-
-  get 'say/hello_michael'
+  get 'games/goldmine'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-root 'welcome#index'
-get '' => 'welcome#index'
+  # root 'welcome#index'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-get "hello" => "say#hello_dojo"
-get "say/hello" => "say#hello"
-get "say/hello/joe" => "say#hello_joe"
-get "say/hello/michael" => "say#hello_michael"
-get "times" => "times#counter"
-get "times/restart" => "times#restart"
+get '' => 'games#index'
+post 'goldmine' => 'games#goldmine'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

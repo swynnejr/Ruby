@@ -1,0 +1,30 @@
+<% if flash[:notice] %>
+<div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<h2>Farm</h2>
+<p>(earns 10-20 gold)</p>
+<form action="/goldmine" method="POST">
+<input type="submit" value="Farm">
+</form><br>
+
+<h2>Cave</h2>
+<p>(earns 5-10 gold)</p>
+<form action="/goldmine" method="POST">
+<input type="submit" value="Cave">
+</form><br>
+
+<h2>House</h2>
+<p>(earns 2-5 gold)</p>
+<form action="/goldmine" method="POST">
+<input type="submit" value="House">
+</form><br>
+
+<h2>Casino</h2>
+<p>(earns Or takes 0-50 gold)</p>
+<form action="/goldmine" method="POST">
+<input type="submit" value="Casino">
+</form><br>
+
+<p>Activities:</p><br>
+
+<p>Find me in app/views/games/index.html.erb</p>
