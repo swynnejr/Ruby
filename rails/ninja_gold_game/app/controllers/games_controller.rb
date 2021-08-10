@@ -8,19 +8,21 @@ class GamesController < ApplicationController
   end
 
   def goldmine
-    # IF FORM SUBMITS FARM
-    # if
-      session[:counter] += rand(10..20)
+    if params[:destination] == "farm"
+      gold = rand(10..20)
+      session[:counter] += gold
     # IF FORM SUBMITS CAVE
-    # elsif
-      session[:counter] += rand(5..10)
+    elsif params[:destination] == "cave"
+      gold = rand(5..10)
+      session[:counter] += gold
     # IF FORM SUBMITS HOUSE
-    # elsif
-      session[:counter] += rand(2..5)
+    elsif params[:destination] == "house"
+      gold = rand(2..5)
+      session[:counter] += gold
     # IF FORM SUBMITS CASINO
-    # else
-      gamble = rand(-50..50)
-      session[:counter] += gamble
+    else params[:destination] == "casino"
+      gold = rand(-50..50)
+      session[:counter] += gold
     # end
     redirect_to ''
   end
