@@ -36,7 +36,7 @@ reload!   **necessary if you are in the rails console
 1:) /vagrant/rails/your_project$ rails c
 2:) Hirb.enable
 3:) *Table*.new
-4:) *Table*.create(*collumn*:"whatever" *user:User.first* if you want to populate a foreign key)
+4:) *Table*.create(*collumn*:"whatever" (*separated by commas*) *user:User.first* if you want to populate a foreign key)
 
 *********************
 *** CREATE ROUTES ***

@@ -1,0 +1,23 @@
+<h1>Listing <%= @number %> Dojos</h1>
+<table>
+    <thead>
+    <tr style="font-weight: bolder;">
+      <td>Coding Dojo Branch</td>
+      <td>Street</td>
+      <td>City</td>
+      <td>State</td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @dojos.each do |dojo| %>
+    <tr>
+      <td><%= dojo.branch %></td>
+      <td><%= dojo.street %></td>
+      <td><%= dojo.city %></td>
+      <td><%= dojo.state %></td>
+    </tr>
+  <% end %>  
+  </tbody>
+</table>
+
+<p>Find me in app/views/dojo/index.html.erb</p>
