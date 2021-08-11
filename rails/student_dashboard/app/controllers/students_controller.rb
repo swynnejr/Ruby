@@ -22,6 +22,9 @@ class StudentsController < ApplicationController
   end
 
   def show
+    @show_student = Student.find(params[:id])
+    @home_dojo = Dojo.find(params[:dojo_id])
+    @students_by_dojo = Dojo.find(params[:dojo_id]).students
   end
 
   private
