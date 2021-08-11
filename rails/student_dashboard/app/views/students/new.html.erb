@@ -1,2 +1,25 @@
-<h1>Students#new</h1>
-<p>Find me in app/views/students/new.html.erb</p>
+<h1>New Student</h1>
+<% if flash[:notice] %>
+    <div class="notice">
+        <%= flash[:notice] %>
+    </div>
+    <% end %>
+        <form action="/dojos/:dojo_id/students" method="POST">
+            First Name: <input type="text" name="student[first_name]"><br>
+            Last Name: <input type="text" name="student[last_name]"><br>
+            Email: <input type="text" name="student[email]"><br>
+            Dojo: <select name="student[dojo_id]" id="">
+                <option value="<%= @home_dojo.id%>"><%= @home_dojo.branch %></option>
+            <% @dojos.each do |dojo| %> 
+            <% if dojo.id != @home_dojo.id %>
+                <option value="<%= dojo.branch %>">
+                    <%= dojo.branch %>
+                </option>
+            <% end %>
+            <% end %>
+            </select><br>
+
+                    <input type="submit" value="Create" name="Create">
+        </form>
+        <a href="/dojos">Go Back</a>
+        <p>Find me in app/views/students/new.html.erb</p>

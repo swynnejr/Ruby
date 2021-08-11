@@ -59,3 +59,7 @@ Running via Spring preloader in process 3685
 | 4  | CD Chicago  | 4444 Institute Pl | Chicago  | IL    | 2021-08-10 21:12:52 UTC | 2021-08-10 21:12:52 UTC |
 +----+-------------+-------------------+----------+-------+-------------------------+-------------------------+
 4 rows in set
+
+    <% @dojos.each do |dojo| %>
+        <option value="<%= dojo.name %>"><%= dojo.name %></option>
+    <% end %>

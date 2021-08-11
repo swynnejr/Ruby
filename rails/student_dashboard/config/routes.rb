@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dojos/:id/students/new' => "students#new"
+
   get 'students/index'
 
   get 'students/create'
