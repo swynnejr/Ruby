@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
     @student = Student.create(student_params)
     if @student.valid?
       # redirect_to dojo_student_path(dojo_id: @student.dojo_id, id: @student.id)
-      redirect_to dojo_student_path(@student)
+      redirect_to dojo_student_path(@student.dojo, @student)
     else
       flash[:notice] = @dojo.errors.full_messages
       redirect_to :back
@@ -26,7 +26,7 @@ class StudentsController < ApplicationController
 
   private
     def student_params
-      params.require(:student).permit(:first_name, :last_name, :email)
+      params.require(:student).permit(:first_name, :last_name, :email, :dojo_id)
     end
   
 
