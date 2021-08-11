@@ -9,3 +9,30 @@
 </form>
 <a href="/dojos">Go Back</a>
 <p>Find me in app/views/dojo/edit.html.erb</p>
+
+<!-- Started GET "/dojos/5/edit" for 10.0.2.2 at 2021-08-11 05:32:36 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by DojosController#edit as HTML
+  Parameters: {"id"=>"5"}
+  Dojo Load (1.1ms)  SELECT  "dojos".* FROM "dojos" WHERE "dojos"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered dojos/edit.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 137ms (Views: 97.9ms | ActiveRecord: 1.1ms)
+
+Started PATCH "/dojos/5" for 10.0.2.2 at 2021-08-11 05:32:41 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by DojosController#update as HTML
+  Parameters: {"dojo"=>{"branch"=>"CD Dallas", "street"=>"5555  Commerce St", "city"=>"Dallas", "state"=>"TX"}, "id"=>"5"}
+  Dojo Load (1.0ms)  SELECT  "dojos".* FROM "dojos" WHERE "dojos"."id" = ? LIMIT 1  [["id", 5]]
+   (0.0ms)  begin transaction
+   (0.1ms)  rollback transaction
+Redirected to http://localhost:3000/dojos
+Completed 302 Found in 25ms (ActiveRecord: 1.1ms)
+
+  
+  Started GET "/dojos" for 10.0.2.2 at 2021-08-11 05:32:41 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by DojosController#index as HTML
+   (1.0ms)  SELECT COUNT(*) FROM "dojos"
+  Dojo Load (1.6ms)  SELECT "dojos".* FROM "dojos"
+  Rendered dojos/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 137ms (Views: 88.1ms | ActiveRecord: 2.6ms) -->
