@@ -23,6 +23,8 @@ class DojosController < ApplicationController
 
   def show
     @dojo = Dojo.find(params[:id])
+    # @students = Student.find_by(dojo_id: (params[:id])
+    @students_by_dojo = Dojo.find(params[:id]).students
   end
 
   # I tried with and without @ symbol
@@ -45,4 +47,8 @@ class DojosController < ApplicationController
     def dojo_params
       params.require(:dojo).permit(:branch, :street, :city, :state)
     end
+    def student_params
+      params.require(:student).permit(:first_name, :last_name, :email, :dojo_id)
+    end
+
 end

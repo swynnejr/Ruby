@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'students/index'
+
+  get 'students/create'
+
+  get 'students/new'
+
+  get 'students/edit'
+
+  get 'students/show'
+
   # get 'dojo/index'
 
   # get 'dojo/create'
@@ -26,7 +36,9 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :dojos
+  resources :dojos do
+    resources :students
+  end
 
   # Example resource route with options:
   #   resources :products do

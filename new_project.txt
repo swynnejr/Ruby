@@ -38,6 +38,8 @@ reload!   **necessary if you are in the rails console
 3:) *Table*.new
 4:) *Table*.create(*collumn*:"whatever" (*separated by commas*) *user:User.first* if you want to populate a foreign key)
 
+??? Did you remember quotation marks and commas?!?!?!?
+
 *********************
 *** CREATE ROUTES ***
 
@@ -65,6 +67,7 @@ delete "products/:id" => "products#destroy"
 *** CREATE CONTROLLERS ***
 
 * IF DEFAULT RESTFUL *
+* only generate GET requests, manually add POST/PATCH/PUT/DELETE to the existing controller methods
 
 rails g controller Users index create new edit show
 

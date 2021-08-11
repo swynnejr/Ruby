@@ -1,0 +1,61 @@
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/rails/student_dashboard$ rake routes
+           Prefix Verb   URI Pattern                                 Controller#Action
+    dojo_students GET    /dojos/:dojo_id/students(.:format)          students#index
+                  POST   /dojos/:dojo_id/students(.:format)          students#create
+ new_dojo_student GET    /dojos/:dojo_id/students/new(.:format)      students#new
+edit_dojo_student GET    /dojos/:dojo_id/students/:id/edit(.:format) students#edit
+     dojo_student GET    /dojos/:dojo_id/students/:id(.:format)      students#show
+                  PATCH  /dojos/:dojo_id/students/:id(.:format)      students#update
+                  PUT    /dojos/:dojo_id/students/:id(.:format)      students#update
+                  DELETE /dojos/:dojo_id/students/:id(.:format)      students#destroy
+            dojos GET    /dojos(.:format)                            dojos#index
+                  POST   /dojos(.:format)                            dojos#create
+         new_dojo GET    /dojos/new(.:format)                        dojos#new
+        edit_dojo GET    /dojos/:id/edit(.:format)                   dojos#edit
+             dojo GET    /dojos/:id(.:format)                        dojos#show
+                  PATCH  /dojos/:id(.:format)                        dojos#update
+                  PUT    /dojos/:id(.:format)                        dojos#update
+                  DELETE /dojos/:id(.:format)                        dojos#destroy
+
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/rails/student_dashboard$ rails g controller Students index create new
+edit show
+Running via Spring preloader in process 3685
+      create  app/controllers/students_controller.rb
+       route  get 'students/show'
+       route  get 'students/edit'
+       route  get 'students/new'
+       route  get 'students/create'
+       route  get 'students/index'
+      invoke  erb
+      create    app/views/students
+      create    app/views/students/index.html.erb
+      create    app/views/students/create.html.erb
+      create    app/views/students/new.html.erb
+      create    app/views/students/edit.html.erb
+      create    app/views/students/show.html.erb
+      invoke  test_unit
+      create    test/controllers/students_controller_test.rb
+      invoke  helper
+      create    app/helpers/students_helper.rb
+      invoke    test_unit
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/students.coffee
+      invoke    scss
+      create      app/assets/stylesheets/students.scss
+
+2.3.1 :014 > Student.all
+  Student Load (1.3ms)  SELECT "students".* FROM "students"
++----+------------+------------+-----------------+---------+-------------------------+-------------------------+| id | first_name | last_name  | email           | dojo_id | created_at              | updated_at              |+----+------------+------------+-----------------+---------+-------------------------+-------------------------+| 1  | Ninja1     | NinjaOne   | ninja1@mail.com | 1       | 2021-08-11 19:30:31 UTC | 2021-08-11 19:30:31 UTC || 2  | Ninja2     | NinjaTwo   | ninja2@mail.com | 1       | 2021-08-11 19:31:29 UTC | 2021-08-11 19:31:29 UTC || 3  | Ninja3     | NinjaThree | ninja3@mail.com | 2       | 2021-08-11 19:31:56 UTC | 2021-08-11 19:31:56 UTC || 4  | Ninja4     | NinjaFour  | ninja4@mail.com | 2       | 2021-08-11 19:32:20 UTC | 2021-08-11 19:32:20 UTC || 5  | Ninja5     | NinjaFive  | ninja5@mail.com | 3       | 2021-08-11 19:32:38 UTC | 2021-08-11 19:32:38 UTC || 6  | Ninja6     | NinjaSix   | ninja6@mail.com | 3       | 2021-08-11 19:32:56 UTC | 2021-08-11 19:32:56 UTC || 7  | Ninja7     | NinjaSeven | ninja7@mail.com | 4       | 2021-08-11 19:33:20 UTC | 2021-08-11 19:33:20 UTC || 8  | Ninja8     | NinjaEight | ninja8@mail.com | 4       | 2021-08-11 19:33:38 UTC | 2021-08-11 19:33:38 UTC |+----+------------+------------+-----------------+---------+-------------------------+-------------------------+8 rows in set
+2.3.1 :015 > Dojo.all
+  Dojo Load (1.7ms)  SELECT "dojos".* FROM "dojos"
++----+-------------+-------------------+----------+-------+-------------------------+-------------------------+
+| id | branch      | street            | city     | state | created_at              | updated_at              |
++----+-------------+-------------------+----------+-------+-------------------------+-------------------------+
+| 1  | CD Seattle  | 1111 Main St      | Bellevue | WA    | 2021-08-10 21:10:46 UTC | 2021-08-10 21:10:46 UTC |
+| 2  | CD San Jose | 2222 Zanker Rd    | San Jose | CA    | 2021-08-10 21:11:54 UTC | 2021-08-10 21:11:54 UTC |
+| 3  | CD Burbank  | 3333 Olive St     | Burbank  | CA    | 2021-08-10 21:12:21 UTC | 2021-08-10 21:12:21 UTC |
+| 4  | CD Chicago  | 4444 Institute Pl | Chicago  | IL    | 2021-08-10 21:12:52 UTC | 2021-08-10 21:12:52 UTC |
++----+-------------+-------------------+----------+-------+-------------------------+-------------------------+
+4 rows in set
