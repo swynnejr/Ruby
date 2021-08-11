@@ -1,0 +1,29 @@
+<h1>Listing <%= @number %> Dojos</h1>
+<table>
+    <thead>
+    <tr style="font-weight: bolder;">
+      <td>Coding Dojo Branch</td>
+      <td>Street</td>
+      <td>City</td>
+      <td>State</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @dojos.each do |dojo| %>
+    <tr>
+      <td><%= dojo.branch %></td>
+      <td><%= dojo.street %></td>
+      <td><%= dojo.city %></td>
+      <td><%= dojo.state %></td>
+      <td><a href="/dojos/<%=dojo.id%>">Show</a>||<a href="/dojos/<%=dojo.id%>/edit">Edit</a>|| <a href="/dojos/<%= dojo.id %>" data-method="delete">Delete</a>
+      
+      <!-- THIS WORKS, BUT IS A BUTTON -->
+      <!-- <form action="/dojos/<%=dojo.id%>" method="POST"><input type="hidden" name="_method" value="delete"><input type="submit"value='delete'></form></td> -->
+    </tr>
+  <% end %>  
+  </tbody>
+</table>
+<!-- <a href="/dojos/new">New Dojo</a> -->
+<a href="<%= new_dojo_path %>">New Dojo</a>
+<p>Find me in app/views/dojo/index.html.erb</p>
