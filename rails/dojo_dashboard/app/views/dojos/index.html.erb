@@ -16,7 +16,10 @@
       <td><%= dojo.street %></td>
       <td><%= dojo.city %></td>
       <td><%= dojo.state %></td>
-      <td><a href="/dojos/<%=dojo.id%>">Show</a>||<a href="/dojos/<%=dojo.id%>/edit">Edit</a>||<a href="/dojos/<%=dojo.id%>" method="DELETE">Delete</a></td>
+      <td><a href="/dojos/<%=dojo.id%>">Show</a>||<a href="/dojos/<%=dojo.id%>/edit">Edit</a>|| <a href="/dojos/<%= dojo.id %>" data-method="delete">Delete</a>
+      
+      <!-- THIS WORKS, BUT IS A BUTTON -->
+      <!-- <form action="/dojos/<%=dojo.id%>" method="POST"><input type="hidden" name="_method" value="delete"><input type="submit"value='delete'></form></td> -->
     </tr>
   <% end %>  
   </tbody>

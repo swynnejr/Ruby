@@ -25,10 +25,22 @@ class DojosController < ApplicationController
     @dojo = Dojo.find(params[:id])
   end
 
+  # I tried with and without @ symbol
   def update
+    dojo = Dojo.find(params[:id])
+    dojo.branch = params[:branch]
+    dojo.street = params[:street]
+    dojo.city = params[:city]
+    dojo.state = params[:state]
+    dojo.save
+    redirect_to "/dojos"
+    # fail   <<<< Checks params being passed through
   end
 
   def destroy
+    dojo = Dojo.find(params[:id])
+    dojo.destroy
+    redirect_to "/dojos"
   end
   private
     def dojo_params

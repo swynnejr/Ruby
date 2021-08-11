@@ -1,10 +1,10 @@
 <h1>Edit Dojo:</h1>
-<form action='/dojos/<%= @dojo.id %>' method='POST'>
-  Branch:<input type="text" name='dojo[branch]' placeholder='<%= @dojo.branch %>'><br>
-  Street:<input type="text" name='dojo[street]' placeholder='<%= @dojo.street %>'><br>
-  City:<input type="text" name='dojo[city]' placeholder='<%= @dojo.city %>'><br>
-  State:<input type="text" name='dojo[state]' placeholder='<%= @dojo.state %>'><br>
-
+<form action='/dojos/<%=@dojo.id%>' method='POST'>
+  <input type="hidden" name="_method" value="patch">
+  Branch:<input type="text" name='dojo[branch]' value='<%= @dojo.branch %>'><br>
+  Street:<input type="text" name='dojo[street]' value='<%= @dojo.street %>'><br>
+  City:<input type="text" name='dojo[city]' value='<%= @dojo.city %>'><br>
+  State:<input type="text" name='dojo[state]' value='<%= @dojo.state %>'><br>
   <input type="submit" value="Edit">
 </form>
 <a href="/dojos">Go Back</a>
