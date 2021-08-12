@@ -3,7 +3,7 @@ class BankAccount
     attr_reader :account_number, :checking_account, :savings_account
     @@count = 0
     def initialize
-        @account_number = generate_account
+        @account_number = create_account
         @checking_account = 20
         @savings_account = 20
         @@count += 2
@@ -31,28 +31,29 @@ class BankAccount
         @saving += amount
         end
     end
-    def withdrawal(account, amount)
-        if account.downcase == "checking"
-            if @checking - amount < 0
-                raise "Insufficient Funds, you have #{@checking} in this account"
-            else
-                @checking -= amount
-            end
-        else
-            if @saving - amount < 0
-                raise "Insufficient Funds, you have #{@saving} in this account"
-            else
-                @saving -= amount
-            end
-        end
-    end
-    # def checking_withdrawl(amount)
-    #     @checking_account -= amount
-    #     if @checking_account < 0
-    #         puts "You're broke."
-    #     self
+    # def withdrawal(account, amount)
+    #     if account.downcase == "checking"
+    #         if @checking - amount < 0
+    #             raise "Insufficient Funds, you have #{@checking} in this account"
+    #         else
+    #             @checking -= amount
+    #         end
+    #     else
+    #         if @saving - amount < 0
+    #             raise "Insufficient Funds, you have #{@saving} in this account"
+    #         else
+    #             @saving -= amount
+    #         end
     #     end
     # end
+    def checking_withdrawl(amount)
+        if @checking_account - amount < 0
+            p "You're broke."
+        else
+            @checking_account -= amount
+            p @checking_account
+        end
+    end
     # def savings_withdrawl(amount)
     #     @savings_account -= amount
     #     if @savings_account < 0
@@ -60,14 +61,13 @@ class BankAccount
     #     self
     #     end
     # end
-    # def total_money
-    #     total = @savings_account + @checking_account
-    #     puts total
-    #     self
-    # end
-    def total
-        "Checking Balance: #{@checking}\nSaving Balance: #{@saving}\nTotal Balance: #{@checking + @saving}"
+    def total_money
+        total = @savings_account + @checking_account
+        p total
     end
+    # def total
+    #     "Checking Balance: #{@checking}\nSaving Balance: #{@saving}\nTotal Balance: #{@checking + @saving}"
+    # end
     def account_information
         "Account Number: #{@account_number}\nInterest Rate: #{@interest_rate}\n#{self.total}" 
     end

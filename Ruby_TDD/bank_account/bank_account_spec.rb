@@ -8,8 +8,11 @@ RSpec.describe BankAccount do
         expect(@bankaccount1.checking_account).to eq(20)
     end
     it 'has a getter for total account balance' do
-        expect(@bankaccount1.total).to be true
+        expect(@bankaccount1.total_money).to eq 40
     end
-    it 'has a function to allow the user to withdraw cash'
+    it 'has a function to allow the user to withdraw cash' do
+        expect(@bankaccount1.checking_withdrawl(10)).to eq 10
+    end
+
 
 end
