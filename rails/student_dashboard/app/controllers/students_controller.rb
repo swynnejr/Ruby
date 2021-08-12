@@ -19,6 +19,9 @@ class StudentsController < ApplicationController
   end
 
   def edit
+    @dojos = Dojo.all
+    @show_student = Student.find(params[:id])
+    @home_dojo = Dojo.find(params[:dojo_id])
   end
 
   def show
@@ -26,6 +29,24 @@ class StudentsController < ApplicationController
     @home_dojo = Dojo.find(params[:dojo_id])
     @students_by_dojo = Dojo.find(params[:dojo_id]).students
   end
+
+  def update
+    student = Student.find(params[:id])
+    student.update(student_params)
+    student.save
+    @home_dojo = Dojo.find(params[:dojo_id])
+    # MUST HAVE IF STATEMENT or it will throw error if there is no error tp give a full message for
+    puts student.errors.full_messages if student.errors
+    redirect_to "/dojos"
+    # fail   <<<< Checks params being passed through
+  end
+
+  def destroy
+    student = Student.find(params[:id])
+    student.destroy
+    redirect_to "/dojos"
+  end
+
 
   private
     def student_params

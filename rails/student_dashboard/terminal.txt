@@ -63,3 +63,6 @@ Running via Spring preloader in process 3685
     <% @dojos.each do |dojo| %>
         <option value="<%= dojo.name %>"><%= dojo.name %></option>
     <% end %>
+
+
+||<a href="/dojos/<%=dojo.id%>/students/<%=student.id%>" data-method="delete">Delete</a>

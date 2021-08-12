@@ -1,2 +1,21 @@
-<h1>Students#edit</h1>
+<h1>Editing <%=@show_student.first_name%> <%=@show_student.last_name%></h1>
+<form action='/dojos/<%=@show_student.dojo_id%>/students/<%=@show_student.id%>' method='POST'>
+  <input type="hidden" name="_method" value="patch">
+  First Name:<input type="text" name='student[first_name]' value='<%= @show_student.first_name %>'><br>
+  Last Name:<input type="text" name='student[last_name]' value='<%= @show_student.last_name %>'><br>
+  Email:<input type="text" name='student[email]' value='<%= @show_student.email %>'><br>
+  Dojo: <select name="student[dojo_id]" id="">
+    <option value="<%= @home_dojo.id%>"><%= @home_dojo.branch %></option>
+<% @dojos.each do |dojo| %> 
+<% if dojo.id != @home_dojo.id %>
+    <option value="<%= dojo.branch %>">
+        <%= dojo.branch %>
+    </option>
+<% end %>
+<% end %>
+</select><br>
+<input type="submit" value="Edit">
+</form>
+<a href="/dojos">Go Home</a>
+<a href="/dojos/<%=@show_student.dojo_id%>/students/<%=@show_student.id%>"><%=@show_student.first_name%></a>
 <p>Find me in app/views/students/edit.html.erb</p>
