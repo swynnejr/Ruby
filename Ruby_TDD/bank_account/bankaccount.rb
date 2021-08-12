@@ -10,12 +10,10 @@ class BankAccount
         @interest_rate = 0.01
     end
     def checking_balance
-        puts @checking_account
-        self
+        p @checking_account
     end
     def savings_balance
-        puts @savings_account
-        self
+        p @savings_account
     end
     def checking_deposit(amount)
         @checking_account += amount
@@ -24,13 +22,13 @@ class BankAccount
         @savings_account += amount
     end
 # CHECK SOLUTIONS DID IT A COOL WAY
-    def deposit(account, amount)
-        if account.downcase == "checking"
-        @checking += amount
-        else
-        @saving += amount
-        end
-    end
+    # def deposit(account, amount)
+    #     if account.downcase == "checking"
+    #     @checking += amount
+    #     else
+    #     @saving += amount
+    #     end
+    # end
     # def withdrawal(account, amount)
     #     if account.downcase == "checking"
     #         if @checking - amount < 0
