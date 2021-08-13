@@ -1,0 +1,301 @@
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/ruby_tdd/apple_tree$ rspec apple_spec.rb
+
+An error occurred while loading ./apple_spec.rb.
+Failure/Error: __send__(method, file)
+
+SyntaxError:
+  /vagrant/ruby_tdd/apple_tree/apple_spec.rb:25: syntax error, unexpected keyword_end, expecting end-of-input
+          end
+             ^
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:2112:in `load'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:2112:in `load_file_handling_errors'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1615:in `block in load_spec_files'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1613:in `each'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1613:in `load_spec_files'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:102:in `setup'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:86:in `run'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:71:in `run'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:45:in `invoke'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/exe/rspec:4:in `<top (required)>'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/rspec:23:in `load'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/rspec:23:in `<main>'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:24:in `eval'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:24:in `<main>'
+#
+#   Showing full backtrace because every line was filtered out.
+#   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+#   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+No examples found.
+
+
+Finished in 0.00003 seconds (files took 0.13265 seconds to load)
+0 examples, 0 failures, 1 error occurred outside of examples
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/ruby_tdd/apple_tree$ rspec apple_spec.rb
+
+An error occurred while loading ./apple_spec.rb.
+Failure/Error: __send__(method, file)
+
+SyntaxError:
+  /vagrant/ruby_tdd/apple_tree/apple_spec.rb:25: syntax error, unexpected keyword_end, expecting end-of-input
+          end
+             ^
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:2112:in `load'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:2112:in `load_file_handling_errors'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1615:in `block in load_spec_files'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1613:in `each'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1613:in `load_spec_files'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:102:in `setup'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:86:in `run'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:71:in `run'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:45:in `invoke'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/exe/rspec:4:in `<top (required)>'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/rspec:23:in `load'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/rspec:23:in `<main>'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:24:in `eval'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:24:in `<main>'
+#
+#   Showing full backtrace because every line was filtered out.
+#   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+#   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+No examples found.
+
+
+Finished in 0.00004 seconds (files took 0.1239 seconds to load)
+0 examples, 0 failures, 1 error occurred outside of examples
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/ruby_tdd/apple_tree$ rspec apple_spec.rb
+
+An error occurred while loading ./apple_spec.rb.
+Failure/Error: __send__(method, file)
+
+SyntaxError:
+  /vagrant/ruby_tdd/apple_tree/apple_spec.rb:23: syntax error, unexpected keyword_end, expecting end-of-input
+      end
+         ^
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:2112:in `load'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:2112:in `load_file_handling_errors'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1615:in `block in load_spec_files'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1613:in `each'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1613:in `load_spec_files'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:102:in `setup'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:86:in `run'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:71:in `run'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:45:in `invoke'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/exe/rspec:4:in `<top (required)>'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/rspec:23:in `load'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/rspec:23:in `<main>'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:24:in `eval'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:24:in `<main>'
+#
+#   Showing full backtrace because every line was filtered out.
+#   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+#   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+No examples found.
+
+
+Finished in 0.00003 seconds (files took 0.12082 seconds to load)
+0 examples, 0 failures, 1 error occurred outside of examples
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/ruby_tdd/apple_tree$ rspec apple_spec.rb
+
+An error occurred while loading ./apple_spec.rb.
+Failure/Error: __send__(method, file)
+
+SyntaxError:
+  /vagrant/ruby_tdd/apple_tree/apple_spec.rb:26: syntax error, unexpected keyword_end, expecting end-of-input
+          end
+             ^
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:2112:in `load'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:2112:in `load_file_handling_errors'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1615:in `block in load_spec_files'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1613:in `each'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1613:in `load_spec_files'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:102:in `setup'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:86:in `run'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:71:in `run'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:45:in `invoke'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/exe/rspec:4:in `<top (required)>'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/rspec:23:in `load'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/rspec:23:in `<main>'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:24:in `eval'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:24:in `<main>'
+#
+#   Showing full backtrace because every line was filtered out.
+#   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+#   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+No examples found.
+
+
+Finished in 0.00003 seconds (files took 0.11608 seconds to load)
+0 examples, 0 failures, 1 error occurred outside of examples
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/ruby_tdd/apple_tree$ rspec apple_spec.rb
+
+An error occurred while loading ./apple_spec.rb.
+Failure/Error: __send__(method, file)
+
+SyntaxError:
+  /vagrant/ruby_tdd/apple_tree/apple_tree.rb:21: syntax error, unexpected end-of-input, expecting keyword_end
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:2112:in `load'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:2112:in `load_file_handling_errors'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1615:in `block in load_spec_files'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1613:in `each'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1613:in `load_spec_files'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:102:in `setup'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:86:in `run'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:71:in `run'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:45:in `invoke'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/exe/rspec:4:in `<top (required)>'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/rspec:23:in `load'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/rspec:23:in `<main>'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:24:in `eval'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:24:in `<main>'
+#
+#   Showing full backtrace because every line was filtered out.
+#   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+#   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+No examples found.
+
+
+Finished in 0.00004 seconds (files took 0.12494 seconds to load)
+0 examples, 0 failures, 1 error occurred outside of examples
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/ruby_tdd/apple_tree$ rspec apple_spec.rb
+
+An error occurred while loading ./apple_spec.rb.
+Failure/Error: __send__(method, file)
+
+SyntaxError:
+  /vagrant/ruby_tdd/apple_tree/apple_tree.rb:21: syntax error, unexpected end-of-input, expecting keyword_end
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:2112:in `load'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:2112:in `load_file_handling_errors'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1615:in `block in load_spec_files'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1613:in `each'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1613:in `load_spec_files'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:102:in `setup'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:86:in `run'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:71:in `run'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:45:in `invoke'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/exe/rspec:4:in `<top (required)>'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/rspec:23:in `load'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/rspec:23:in `<main>'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:24:in `eval'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:24:in `<main>'
+#
+#   Showing full backtrace because every line was filtered out.
+#   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+#   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+No examples found.
+
+
+Finished in 0.00004 seconds (files took 0.12288 seconds to load)
+0 examples, 0 failures, 1 error occurred outside of examples
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/ruby_tdd/apple_tree$ rspec apple_spec.rb
+
+An error occurred while loading ./apple_spec.rb.
+Failure/Error: @tree.age = 3
+
+NoMethodError:
+  undefined method `age=' for nil:NilClass
+# ./apple_spec.rb:19:in `block (2 levels) in <top (required)>'
+# ./apple_spec.rb:18:in `block in <top (required)>'
+# ./apple_spec.rb:2:in `<top (required)>'
+
+
+Finished in 0.00002 seconds (files took 0.10409 seconds to load)
+0 examples, 0 failures, 1 error occurred outside of examples
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/ruby_tdd/apple_tree$ rspec apple_spec.rb
+
+An error occurred while loading ./apple_spec.rb.
+Failure/Error: 3.times(@tree.year_gone_by)
+
+NoMethodError:
+  undefined method `year_gone_by' for nil:NilClass
+# ./apple_spec.rb:19:in `block (2 levels) in <top (required)>'
+# ./apple_spec.rb:18:in `block in <top (required)>'
+# ./apple_spec.rb:2:in `<top (required)>'
+
+
+Finished in 0.00003 seconds (files took 0.10341 seconds to load)
+0 examples, 0 failures, 1 error occurred outside of examples
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/ruby_tdd/apple_tree$ rspec apple_spec.rb
+
+An error occurred while loading ./apple_spec.rb.
+Hint: Install the `did_you_mean` gem in order to provide suggestions for similarly named files.
+Failure/Error: require_relative 'appletree'
+
+LoadError:
+  cannot load such file -- /vagrant/ruby_tdd/apple_tree/appletree
+# ./apple_spec.rb:1:in `require_relative'
+# ./apple_spec.rb:1:in `<top (required)>'
+No examples found.
+
+
+Finished in 0.00002 seconds (files took 0.07066 seconds to load)
+0 examples, 0 failures, 1 error occurred outside of examples
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/ruby_tdd/apple_tree$ rspec apple_spec.rb
+
+An error occurred while loading ./apple_spec.rb.
+Failure/Error: 3.times(@tree.year_gone_by)
+
+NoMethodError:
+  undefined method `year_gone_by' for nil:NilClass
+# ./apple_spec.rb:19:in `block (2 levels) in <top (required)>'
+# ./apple_spec.rb:18:in `block in <top (required)>'
+# ./apple_spec.rb:2:in `<top (required)>'
+
+
+Finished in 0.00003 seconds (files took 0.09624 seconds to load)
+0 examples, 0 failures, 1 error occurred outside of examples
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/ruby_tdd/apple_tree$ rspec apple_spec.rb
+
+An error occurred while loading ./apple_spec.rb.
+Failure/Error: 2.times(@tree.year_gone_by)
+
+NoMethodError:
+  undefined method `year_gone_by' for nil:NilClass
+# ./apple_spec.rb:19:in `block (2 levels) in <top (required)>'
+# ./apple_spec.rb:18:in `block in <top (required)>'
+# ./apple_spec.rb:2:in `<top (required)>'
+
+
+Finished in 0.00003 seconds (files took 0.10134 seconds to load)
+0 examples, 0 failures, 1 error occurred outside of examples
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/ruby_tdd/apple_tree$ rspec apple_spec.rb
+
+An error occurred while loading ./apple_spec.rb.
+Failure/Error: @tree.age = 3
+
+NoMethodError:
+  undefined method `age=' for nil:NilClass
+# ./apple_spec.rb:20:in `block (2 levels) in <top (required)>'
+# ./apple_spec.rb:18:in `block in <top (required)>'
+# ./apple_spec.rb:2:in `<top (required)>'
+
+
+Finished in 0.00003 seconds (files took 0.09921 seconds to load)
+0 examples, 0 failures, 1 error occurred outside of examples
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/ruby_tdd/apple_tree$ rspec apple_spec.rb
+
+An error occurred while loading ./apple_spec.rb.
+Failure/Error: @tree.age += 2
+
+NoMethodError:
+  undefined method `age' for nil:NilClass
+# ./apple_spec.rb:20:in `block (2 levels) in <top (required)>'
+# ./apple_spec.rb:18:in `block in <top (required)>'
+# ./apple_spec.rb:2:in `<top (required)>'
+
+
+Finished in 0.00003 seconds (files took 0.10506 seconds to load)
+0 examples, 0 failures, 1 error occurred outside of examples
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/ruby_tdd/apple_tree$
