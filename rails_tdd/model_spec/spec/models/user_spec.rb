@@ -22,7 +22,7 @@ RSpec.describe User do
       expect(user).to be_invalid
     end
 
-    it "should not save if last_name field is blank"
+    it "should not save if last_name field is blank" do
       user = User.new(
         first_name: 'shane',
         last_name: '',
@@ -31,7 +31,7 @@ RSpec.describe User do
       expect(user).to be_invalid
     end
 
-    it "should not save if email already exists"
+    it "should not save if email already exists" do
       user = User.new(
         first_name: 'shane',
         last_name: 'chang',
@@ -41,7 +41,7 @@ RSpec.describe User do
     end
 
 
-    it "should not save if invalid email format"
+    it "should not save if invalid email format" do
       user = User.new(
         first_name: 'shane',
         last_name: 'chang',
@@ -49,5 +49,6 @@ RSpec.describe User do
       )
       expect(user).to be_invalid
     end
+  
   end
 end
