@@ -32,9 +32,14 @@ RSpec.describe User do
     end
 
     it "should not save if email already exists" do
-      user = User.new(
+      user = User.create(
         first_name: 'shane',
         last_name: 'chang',
+        email: 'schang@codingdojo.com'
+      )
+      user = User.new(
+        first_name: 'scha',
+        last_name: 'ng',
         email: 'schang@codingdojo.com'
       )
       expect(user).to be_invalid
