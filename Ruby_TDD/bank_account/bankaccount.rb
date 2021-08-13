@@ -46,19 +46,20 @@ class BankAccount
     # end
     def checking_withdrawl(amount)
         if @checking_account - amount < 0
-            p "You're broke."
+            raise "You're broke."
         else
             @checking_account -= amount
             p @checking_account
         end
     end
-    # def savings_withdrawl(amount)
-    #     @savings_account -= amount
-    #     if @savings_account < 0
-    #         puts "You're broke."
-    #     self
-    #     end
-    # end
+    def savings_withdrawl(amount)
+        if @savings_account - amount < 0
+            raise "You're broke."
+        else
+            @savings_account -= amount
+            p @savings_account
+        end
+    end
     def total_money
         total = @savings_account + @checking_account
         p total
