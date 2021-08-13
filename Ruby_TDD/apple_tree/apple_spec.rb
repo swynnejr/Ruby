@@ -16,8 +16,9 @@ RSpec.describe AppleTree do
         expect(@tree.apple_count).to eq(0)
     end
     context "tree is three years old" do
-        # 2.times(@tree.year_gone_by)
-        @tree.age = 3
+        # # 2.times(@tree.year_gone_by)
+        @tree.year_gone_by
+        @tree.year_gone_by
         it "doesn't grow apples until it is 3" do
             expect(@tree.apple_count).to eq(0)
         end
