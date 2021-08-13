@@ -1,0 +1,74 @@
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/rails_tdd/model_spec$ rspec spec
+.***
+
+Pending: (Failures listed here are expected and do not affect your suite's status)
+
+  1) User should not save if last_name field is blank
+     # Not yet implemented
+     # ./spec/models/user_spec.rb:12
+
+  2) User should not save if email already exists
+     # Not yet implemented
+     # ./spec/models/user_spec.rb:14
+
+  3) User should not save if invalid email format
+     # Not yet implemented
+     # ./spec/models/user_spec.rb:16
+
+
+Finished in 0.02932 seconds (files took 3.34 seconds to load)
+4 examples, 0 failures, 3 pending
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/rails_tdd/model_spec$ rspec spec
+..***
+
+Pending: (Failures listed here are expected and do not affect your suite's status)
+
+  1) User With invalid attributes should not save if last_name field is blank
+     # Not yet implemented
+     # ./spec/models/user_spec.rb:25
+
+  2) User With invalid attributes should not save if email already exists
+     # Not yet implemented
+     # ./spec/models/user_spec.rb:27
+
+  3) User With invalid attributes should not save if invalid email format
+     # Not yet implemented
+     # ./spec/models/user_spec.rb:29
+
+
+Finished in 0.04101 seconds (files took 3.43 seconds to load)
+5 examples, 0 failures, 3 pending
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/rails_tdd/model_spec$ rspec spec
+
+An error occurred while loading ./spec/models/user_spec.rb.
+Failure/Error: __send__(method, file)
+
+SyntaxError:
+  /vagrant/rails_tdd/model_spec/spec/models/user_spec.rb:51: syntax error, unexpected keyword_end, expecting end-of-input
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:2112:in `load'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:2112:in `load_file_handling_errors'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1615:in `block in load_spec_files'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1613:in `each'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/configuration.rb:1613:in `load_spec_files'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:102:in `setup'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:86:in `run'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:71:in `run'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/lib/rspec/core/runner.rb:45:in `invoke'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/gems/rspec-core-3.10.1/exe/rspec:4:in `<top (required)>'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/rspec:23:in `load'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/rspec:23:in `<main>'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:24:in `eval'
+# /home/vagrant/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:24:in `<main>'
+#
+#   Showing full backtrace because every line was filtered out.
+#   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+#   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+No examples found.
+
+
+Finished in 0.00004 seconds (files took 0.19511 seconds to load)
+0 examples, 0 failures, 1 error occurred outside of examples
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/rails_tdd/model_spec$
