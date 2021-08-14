@@ -3,5 +3,17 @@
 <h3>We kept all your secrets safe while you were gone.</h3>
 <p><%= current_user.email %></p>
 <a href="/users/<%=current_user.id%>/edit">Edit your info</a><br>
-@secrets = current_user.secrets 
+<form action="/secrets" method="POST">
+    <textarea name="secret[content]" cols="30" rows="5"></textarea>
+    <select name="secret[user_id]" id="">
+        <option value="<%=current_user.id%>"><%=current_user.name%></option>
+    </select>
+    <input type="submit" name="Create Secret">
+</form>
+<ul>
+<%= @secrets.each do |secret|%>
+    <li><%= secret.content %></li>
+<% end %>
+</ul>
+
 <p>Find me in app/views/users/show.html.erb</p>

@@ -34,6 +34,22 @@ edit_secret_like GET    /secrets/:secret_id/likes/:id/edit(.:format) likes#edit
                  DELETE /secrets/:id(.:format)                       secrets#destroy
 vagrant@vagrant-ubuntu-trusty-64:/vagrant/dojosecrets$
 
+2.3.1 :003 > Secret.new
++----+---------+---------+------------+------------+
+| id | content | user_id | created_at | updated_at |
++----+---------+---------+------------+------------+
+|    |         |         |            |            |
++----+---------+---------+------------+------------+
+1 row in set
+2.3.1 :004 > Like.new
++----+---------+-----------+------------+------------+
+| id | user_id | secret_id | created_at | updated_at |
++----+---------+-----------+------------+------------+
+|    |         |           |            |            |
++----+---------+-----------+------------+------------+
+1 row in set
+2.3.1 :005 >
+
 
 vagrant@vagrant-ubuntu-trusty-64:/vagrant/dojosecrets$ rails g controller Users new show edit --no-controller-specs --no-view-specs
       create  app/controllers/users_controller.rb
