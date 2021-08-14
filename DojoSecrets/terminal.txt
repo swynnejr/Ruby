@@ -1,3 +1,17 @@
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/dojosecrets$ rake routes
+      Prefix Verb   URI Pattern               Controller#Action
+sessions_new GET    /sessions/new(.:format)   sessions#new
+       users GET    /users(.:format)          users#index
+             POST   /users(.:format)          users#create
+    new_user GET    /users/new(.:format)      users#new
+   edit_user GET    /users/:id/edit(.:format) users#edit
+        user GET    /users/:id(.:format)      users#show
+             PATCH  /users/:id(.:format)      users#update
+             PUT    /users/:id(.:format)      users#update
+             DELETE /users/:id(.:format)      users#destroy
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/dojosecrets$
+
+
 vagrant@vagrant-ubuntu-trusty-64:/vagrant/dojosecrets$ rails g controller Users new show edit --no-controller-specs --no-view-specs
       create  app/controllers/users_controller.rb
        route  get 'users/edit'
