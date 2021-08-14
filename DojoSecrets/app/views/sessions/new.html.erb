@@ -1,8 +1,10 @@
-<h1>Sessions#new</h1>
+<h1>Welcome</h1>
+<h3>Please Log In</h3>
 <form action="/sessions" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<input type="text" id="Email" name = "email">
-	<input type="text" id="Password" name = "password">
+	<input type="text" id="Email" name = "email" placeholder="Email">
+	<input type="text" id="Password" name = "password" placeholder="Password">
 	<input type="submit" name="Log In" value="Log In">
 </form>
+<a href="/users/new">Register a New User</a>
 <p>Find me in app/views/sessions/new.html.erb</p>
