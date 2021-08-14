@@ -1,5 +1,6 @@
-vagrant@vagrant-ubuntu-trusty-64:/vagrant/dojosecrets$ rake routes
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/githubrepos$ rake routes
           Prefix Verb   URI Pattern                                  Controller#Action
+                 GET    /                                            users#new
            users GET    /users(.:format)                             users#index
                  POST   /users(.:format)                             users#create
         new_user GET    /users/new(.:format)                         users#new
@@ -32,28 +33,4 @@ edit_secret_like GET    /secrets/:secret_id/likes/:id/edit(.:format) likes#edit
                  PATCH  /secrets/:id(.:format)                       secrets#update
                  PUT    /secrets/:id(.:format)                       secrets#update
                  DELETE /secrets/:id(.:format)                       secrets#destroy
-vagrant@vagrant-ubuntu-trusty-64:/vagrant/dojosecrets$
-
-
-vagrant@vagrant-ubuntu-trusty-64:/vagrant/dojosecrets$ rails g controller Users new show edit --no-controller-specs --no-view-specs
-      create  app/controllers/users_controller.rb
-       route  get 'users/edit'
-       route  get 'users/show'
-       route  get 'users/new'
-      invoke  erb
-      create    app/views/users
-      create    app/views/users/new.html.erb
-      create    app/views/users/show.html.erb
-      create    app/views/users/edit.html.erb
-      invoke  rspec
-      create    spec/requests/users_spec.rb
-      invoke  helper
-      create    app/helpers/users_helper.rb
-      invoke    rspec
-      create      spec/helpers/users_helper_spec.rb
-      invoke  assets
-      invoke    coffee
-      create      app/assets/javascripts/users.coffee
-      invoke    scss
-      create      app/assets/stylesheets/users.scss
-vagrant@vagrant-ubuntu-trusty-64:/vagrant/dojosecrets$
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/githubrepos$

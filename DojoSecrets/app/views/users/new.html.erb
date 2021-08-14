@@ -1,2 +1,34 @@
-<h1>Users#new</h1>
+<h1>Welcome to Dojo Secrets!</h1>
+<h2>Please sign up below and we will keep your secrets safe.</h2>
+<% if flash[:notice] %>
+<div class="notice"></div><%= flash[:notice] %></div>
+<% end %>
+
+
+<form action="/users" style="border:1px solid #ccc" method="POST">
+    <input type="hidden" name="authenticity_token" value="token_value">
+
+    <label for="email"><b>Email:</b></label>
+    <input type="text" placeholder="Enter Email" name="user[email]" required><br>
+
+    <label for="name"><b>Name:</b></label>
+    <input type="text" placeholder="Enter Name" name="user[name]" required><br>
+
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="user[password]" required><br>
+
+    <label for="password-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="password-repeat" required><br>
+
+    <!-- <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label> -->
+
+    <!-- <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p> -->
+
+    <button type="button">Cancel</button>
+    <button type="submit">Sign Up</button>
+</form>
+
 <p>Find me in app/views/users/new.html.erb</p>
