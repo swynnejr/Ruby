@@ -1,2 +1,14 @@
-<h1>Users#edit</h1>
+
+<h1>Edit <%=@user.name%>:</h1>
+<% if flash[:notice] %>
+<div class="notice"></div><%= flash[:notice] %></div>
+<% end %>
+
+<form action='/users/<%=@user.id%>' method='POST'>
+  <input type="hidden" name="_method" value="patch">
+  Name:<input type="text" name='user[name]' value='<%= @user.name %>'><br>
+  Email:<input type="text" name='user[email]' value='<%= @user.email %>'><br>
+  <input type="submit" value="Edit">
+</form>
+<a href="/users/<%=@user.id%>">My page</a>
 <p>Find me in app/views/users/edit.html.erb</p>
