@@ -34,6 +34,18 @@ edit_secret_like GET    /secrets/:secret_id/likes/:id/edit(.:format) likes#edit
                  DELETE /secrets/:id(.:format)                       secrets#destroy
 vagrant@vagrant-ubuntu-trusty-64:/vagrant/dojosecrets$
 
+  User Load (0.3ms)  SELECT "users".* FROM "users"
++----+----------+-------------------+---------------------------------------------------+-------------------------+-------------------------+
+| id | name     | email             | password_digest                                   | created_at              | updated_at              |
++----+----------+-------------------+---------------------------------------------------+-------------------------+-------------------------+
+| 1  | five     | five@mail.com     | $2a$12$dPQ93QpHgd2qZe.M/krtQuvwurtTyJ5JerASAZ3... | 2021-08-14 19:24:16 UTC | 2021-08-15 01:16:13 UTC |
+| 2  | ten      | ten@mail.com      | $2a$12$WY2/UDn17avqai9WG480AeJbIuZXPlzT.IcEHYR... | 2021-08-14 20:01:03 UTC | 2021-08-15 01:17:30 UTC |
+| 3  | twelve   | twelve@mail.com   | $2a$12$d8lyDcV7PyafmBHGgHn8W.zrqnqXJJnJxElI4hd... | 2021-08-14 20:08:11 UTC | 2021-08-15 01:18:57 UTC |
+| 4  | thirteen | thirteen@mail.com | $2a$12$6Kwnnv8gyrxLePj6TXfZ0emYn1mKBai2nkfq90H... | 2021-08-14 20:08:31 UTC | 2021-08-15 01:19:38 UTC |
++----+----------+-------------------+---------------------------------------------------+-------------------------+-------------------------+
+4 rows in set
+2.3.1 :003 >
+
 2.3.1 :003 > Secret.new
 +----+---------+---------+------------+------------+
 | id | content | user_id | created_at | updated_at |
