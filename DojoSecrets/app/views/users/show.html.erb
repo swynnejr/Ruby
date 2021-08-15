@@ -1,19 +1,23 @@
 
 <h1>Welcome, <%= current_user.name %></h1>
-<h3>We kept all your secrets safe while you were gone.</h3>
 <p><%= current_user.email %></p>
 <a href="/users/<%=current_user.id%>/edit">Edit your info</a><br>
+<h3>We kept all your secrets safe while you were gone.</h3>
+<a href="/secrets">All Secrets</a>
+<h4>Add new secret:</h4>
 <form action="/secrets" method="POST">
-    <textarea name="secret[content]" cols="30" rows="5"></textarea>
+    <textarea name="secret[content]" cols="30" rows="5" placeholder="You can tell me anything and it will stay between us"></textarea>
     <select name="secret[user_id]" id="">
         <option value="<%=current_user.id%>"><%=current_user.name%></option>
     </select>
     <input type="submit" name="Create Secret">
 </form>
+<h2>My Secrets</h2>
 <ul>
 <%= @secrets.each do |secret|%>
-    <li><%= secret.content %></li>
+    <li><%= secret.content %>||<a href="/secrets/<%=secret.id%>" data-method="delete">Delete</a></li>
 <% end %>
 </ul>
+
 
 <p>Find me in app/views/users/show.html.erb</p>
