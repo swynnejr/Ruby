@@ -1,6 +1,8 @@
 class SecretsController < ApplicationController
   def index
     @secrets = Secret.all
+    @likes = Like.all
+    # @user = User.find(session[:user_id])
   end
 
   def create

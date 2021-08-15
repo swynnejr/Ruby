@@ -67,9 +67,9 @@ delete "products/:id" => "products#destroy"
 *** CREATE CONTROLLERS ***
 
 * IF DEFAULT RESTFUL *
-* only generate GET requests, manually add POST/PATCH/PUT/DELETE to the existing controller methods
+* only generate GET requests, manually add POST/PATCH/PUT/DELETE to the existing controller methods or else it will make HTML files for templates that will never be rendered
 
-rails g controller Users index create new edit show
+rails g controller Users index new edit show
 
 * OR ADD CUSTOM *
 
