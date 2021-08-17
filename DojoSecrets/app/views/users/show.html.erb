@@ -6,7 +6,7 @@
 <a href="/secrets">All Secrets</a>
 <h4>Add new secret:</h4>
 <form action="/secrets" method="POST">
-    <input type="hidden" name="authenticity_token" value="token_value">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <textarea name="secret[content]" cols="30" rows="5" placeholder="You can tell me anything and it will stay between us"></textarea>
     <select name="secret[user_id]" id="">
         <option value="<%=current_user.id%>"><%=current_user.name%></option>

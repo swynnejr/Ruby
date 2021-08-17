@@ -7,7 +7,8 @@
 
 
 <form action="/users" style="border:1px solid #ccc" method="POST">
-    <input type="hidden" name="authenticity_token" value="token_value">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>
+    ">
 
     <label for="email"><b>Email:</b></label>
     <input type="text" placeholder="Enter Email" name="user[email]" required><br>
