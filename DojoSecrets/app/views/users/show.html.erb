@@ -16,8 +16,14 @@
 <h2>My Secrets</h2>
 <ul>
 <% @secrets.each do |secret|%>
-    <li><%= secret.content %>||<a href="/secrets/<%=secret.id%>" data-method="delete">Delete</a></li>
+    <li><%= secret.content %>||Total Likes: <%= secret.likes.count %>||<a href="/secrets/<%=secret.id%>" data-method="delete">Delete</a></li>
 <% end %>
+</ul>
+<h2>Secrets I liked</h2>
+<ul>
+    <% @likes.each do |like| %>
+    <li><%= like.content %></li>
+    <% end %>
 </ul>
 
 

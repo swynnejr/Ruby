@@ -85,3 +85,9 @@ vagrant@vagrant-ubuntu-trusty-64:/vagrant/dojosecrets$ rails g controller Users 
       invoke    scss
       create      app/assets/stylesheets/users.scss
 vagrant@vagrant-ubuntu-trusty-64:/vagrant/dojosecrets$
+
+  <% if current_user.secrets_liked == current_user.secrets %>
+  <a href="/secrets/<%=secret.id%>/likes/" data-method="delete">Unlike</a>
+  <% else %>
+  <a href="/secrets/<%=secret.id%>/likes" data-method="POST">Like</a>
+  <% end %>
