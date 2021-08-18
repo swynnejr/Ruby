@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   
   skip_before_action :require_login, except: [:destroy, :show, :edit, :update]
+  # before_action :verify_user, except: [:new, :create, :index]
 
   def index
   
@@ -51,5 +52,12 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:name, :email, :password)
+    end
+
+    def verify_user
+      if session[:user_id] != params[:id]
+        redirect_to user_path(session[:user_id])
+        # redirect_to user_path(User.find(session[:user_id]))
+      end
     end
 end

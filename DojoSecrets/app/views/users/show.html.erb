@@ -11,7 +11,7 @@
     <select name="secret[user_id]" id="">
         <option value="<%=current_user.id%>"><%=current_user.name%></option>
     </select>
-    <input type="submit" name="Create Secret">
+    <input type="submit" name="Create Secret" value="Create Secret">
 </form>
 <h2>My Secrets</h2>
 <ul>
@@ -22,7 +22,7 @@
 <h2>Secrets I liked</h2>
 <ul>
     <% @likes.each do |like| %>
-    <li><%= like.content %></li>
+    <li><%= like.content %> || Total Likes: <%= like.likes.count %></li>
     <% end %>
 </ul>
 
