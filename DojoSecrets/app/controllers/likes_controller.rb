@@ -6,6 +6,7 @@ class LikesController < ApplicationController
     redirect_to :back
   end
   def destroy
+    redirect_to "/users/#{current_user.id}" unless current_user.id == params[:id].to_i
     @like = Like.find(params[:id])
     @like.destroy
     redirect_to :back
