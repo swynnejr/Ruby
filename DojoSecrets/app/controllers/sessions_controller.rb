@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  
+  skip_before_action :require_login, except: [:destroy]
+  
   def new
     # render login page
   end
@@ -18,6 +21,9 @@ class SessionsController < ApplicationController
     # Log User out
     # set session[:user_id] to null
     # redirect to login page
+    #  ~~ OR ~~
+    # session.clear
+    # ~~ OR ~~
     reset_session
     redirect_to "/sessions/new"
   end

@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  
+  skip_before_action :require_login, except: [:destroy, :show, :edit, :update]
+
   def index
   
   end
