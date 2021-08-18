@@ -28,5 +28,9 @@ class ApplicationController < ActionController::Base
     # end
   end
 
+  def require_authorization
+    # F Strings require " " NOT ' '
+    redirect_to "/users/#{current_user.id}" unless current_user.id == params[:id].to_i
+  end
 
 end

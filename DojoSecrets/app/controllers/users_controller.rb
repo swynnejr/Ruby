@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   
   skip_before_action :require_login, except: [:destroy, :show, :edit, :update]
   # before_action :verify_user, except: [:new, :create, :index]
-
+  before_action :require_authorization, except: [:create, :new, :index]
   def index
   
   end

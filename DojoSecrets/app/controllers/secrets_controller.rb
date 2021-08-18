@@ -1,4 +1,7 @@
 class SecretsController < ApplicationController
+  
+  
+  
   def index
     @secrets = Secret.all
     @likes = Like.all
@@ -16,6 +19,7 @@ class SecretsController < ApplicationController
     end
   end
   def destroy
+    redirect_to "/users/#{current_user.id}" unless current_user.id == params[:id].to_i
     secret = Secret.find(params[:id])
     secret.destroy
     redirect_to :back

@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   
   skip_before_action :require_login, except: [:destroy]
+  before_action :require_authorization, except: [:new, :create]
   
   def new
     # render login page
