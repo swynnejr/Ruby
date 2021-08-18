@@ -11,27 +11,76 @@
     -line 7: **add**, '~> 1.3.13'
     -line 16: **add**gem 'hirb'
     -line 17: **insert**gem 'rails-footnotes', '>= 4.0.0', '<5'
+    -line 28: **uncomment**gem 'bcrypt', '~> 3.1.7'
 9) bundle install
 10) rails g rails_footnotes:install
 
 ***********************************
 *** Build ERD aka CREATE MODELS ***
 
-ERD:1) rails g model *Table* *collumn*:string *table it references*:references (<<<<If it's on the "many" end of a relationship)
+ERD:1) DON'T FORGET TO SET UP YOUR RELATIONSHIPS
+    rails g model *Table* *collumn*:string *table it references*:references <<<<If it has a foreign key (is on the "many" end of a relationship)
+
+For Login & Reg: rails g model User name:string email:string password:digest
+
+THREE WAY: AKA One to Many & Many to Many: 
+    rails g model User first_name:string last_name:string password:digest
+    rails g model Event title:string description:text user:references
+    rails g model Attendee user:references event:references
+
 ERD:2) rake db:migrate
 
 *** Create table relationships ***
-***One to many*** example one user has many messages
-User.rb
-    has_many :messages
+Learn Platform Lesson: https://login.codingdojo.com/m/9/4630/31347
+*** This is a 3 way example ***
 
-Message.rb
-    belongs_to :user
+    /app/models/user.rb
+    class User < ApplicationRecord
+        has_secure_password <~ **If using Bcrypt
+        has_many :events
+        has_many :attendees**, dependent: :destroy** <~ Only if you want it to be destroyed with its parent
+        has_many :events_attending, through: :attendees, source: :event
+    end
+
+    /app/models/event.rb
+    class Event < ApplicationRecord
+        belongs_to :user
+        has_many :attendees**, dependent: :destroy** <~ Only if you want it to be destroyed with its parent
+        has_many :users, through: :attendees
+    end
+
+    /app/models/attendee.rb
+    class Event < ApplicationRecord
+        belongs_to :user
+        belongs_to :event
+    end
 
 reload!   **necessary if you are in the rails console
 
-*************************
-*** PUT DATA IN TABLE ***
+***********************
+***** VALIDATIONS *****
+
+class User < ActiveRecord::Base
+  has_secure_password
+  has_many :secrets
+  has_many :likes, dependent: :destroy
+  has_many :secrets_liked, through: :likes, source: :secret
+
+  EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: EMAIL_REGEX }
+
+  before_save :email_lowercase
+
+  def email_lowercase
+    email.downcase!
+  end
+end
+
+
+**************************
+*** IF YOU WANT TO PUT ***
+*** DATA IN YOUR TABLE ***
 
 1:) /vagrant/rails/your_project$ rails c
 2:) Hirb.enable
@@ -47,7 +96,13 @@ In VS Code: Go to /config/routes.ruby
     For RESTful routing ~> **uncomment line 15**
         change :products to :your_featured_category
 
-    Root Route ~> **uncomment** root 'welcome#index'
+** For NESTED routing **
+
+resources :sessions
+resources :users
+resources :secrets do
+    resources :likes
+end
 
 ~~~~~~~~~ OR ~~~~~~~~~~~~
 ~~ ADD ROUTES MANUALLY ~~
@@ -71,9 +126,55 @@ delete "products/:id" => "products#destroy"
 
 rails g controller Users index new edit show
 
+
+********  FOR LOGIN & REG: *************************************
+You will want SESSION controller with current_user HELPER METHOD
+
+  def current_user
+    User.find(session[:user_id]) if session[:user_id]
+  end
+  helper_method :current_user
+
 * OR ADD CUSTOM *
 
 /vagrant/rails/your_project$ rails g controller <ControllerName*plural and capitalized*> <method> <method> *space separated
 
 *** SPIN UP SERVER:  ****
 /vagrant/rails/your_project$ rails s -b 0.0.0.0
+
+************************
+*** LOGIN & REG FORM ***
+** AUTHENTICITY TOKEN **
+
+<form action="/users" style="border:1px solid #ccc" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label for="name"><b>Name:</b></label>
+    <input type="text" placeholder="Enter Name" name="user[name]" required><br>
+    <label for="email"><b>Email:</b></label>
+    <input type="text" placeholder="Enter Email" name="user[email]" required><br>
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="user[password]" required><br>
+    <label for="password-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="user[password_confirmation]" required><br>
+    <button type="submit">Sign Up</button>
+</form>
+
+
+*** LOG OUT BUTTON ***
+*** USING  LAYOUTS ***
+
+<body>
+<% if flash[:errors] %>
+  <% flash[:errors].each do |e| %>
+    <%= e %>
+  <% end %>
+<% end %>
+<% if current_user %>
+  <form action="/sessions/<%=current_user.id%>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Log Out">
+  </form>
+<% end %> 
+<%= yield %>
+</body>
