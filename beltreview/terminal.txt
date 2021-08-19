@@ -87,3 +87,23 @@ vagrant@vagrant-ubuntu-trusty-64:/vagrant/beltreview$ rails g controller Session
 vagrant@vagrant-ubuntu-trusty-64:/vagrant/beltreview$ rails g controller Events index new edit show
 vagrant@vagrant-ubuntu-trusty-64:/vagrant/beltreview$ rails g controller Attendees
 vagrant@vagrant-ubuntu-trusty-64:/vagrant/beltreview$ rails g controller Welcome index
+
+    <% @local_events.each do |event| %>
+    <tr>
+        <td><%= event.title %></td>
+        <td><%= event.date %></td>
+        <td><%= event.city %></td>
+        <td><%= event.user_id %></td>
+        <td>Actions</td>
+    </tr>
+    <% end %>
+
+    <% @other_events.each do |event| %>
+    <tr>
+        <td><%= event.title %></td>
+        <td><%= event.date %></td>
+        <td><%= event.city %></td>
+        <td><%= event.user_id %></td>
+        <td>Actions</td>
+    </tr>
+    <% end %>

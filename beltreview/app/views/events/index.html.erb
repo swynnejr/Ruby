@@ -1,2 +1,47 @@
-<h1>Events#index</h1>
+<h1>Welcome, current_user.name</h1>
+<a href="/users/1">Edit Your Profile</a>
+
+<h3>Here are some of the events in your home state:</h3>
+<table style="border:1px solid #ccc">
+    <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>City</th>
+        <th>Host</th>
+        <th>Actions</th>
+    </tr>
+</table>
+
+<h3>Here are featured events in OTHER states:</h3>
+<table style="border:1px solid #ccc">
+    <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>City</th>
+        <th>Host</th>
+        <th>Actions</th>
+    </tr>
+</table>
+
+<h2>Add Event:</h2>
+<form action="/events" style="border:1px solid #ccc" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label for="title"><b>Title:</b></label>
+    <input type="text" placeholder="Title" name="event[title]" required><br>
+    <label for="date"><b>Date:</b></label>
+    <input type="date" name="event[date]" required><br>
+    <label for="city"><b>Location:</b></label>
+    <input type="text" placeholder="City" name="event[city]" required><br>
+    <label for="state"><b>State:</b></label>
+    <select name="state" id="state">
+        <option value="AZ">AZ</option>
+        <option value="CA">CA</option>
+        <option value="IL">IL</option>
+        <option value="WA">WA</option>
+    </select><br>
+    <button type="submit">Add Event</button>
+</form>
+
+
+
 <p>Find me in app/views/events/index.html.erb</p>

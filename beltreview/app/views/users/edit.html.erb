@@ -1,2 +1,22 @@
-<h1>Users#edit</h1>
+<h1>Edit your profile</h1>
+<form action="/users" style="border:1px solid #ccc" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label for="f_name"><b>First Name:</b></label>
+    <input type="text" placeholder="First Name" name="user[f_name]" required><br>
+    <label for="l_name"><b>Last Name:</b></label>
+    <input type="text" placeholder="Last Name" name="user[l_name]" required><br>
+    <label for="email"><b>Email:</b></label>
+    <input type="text" placeholder="Enter Email" name="user[email]" required><br>
+    <label for="city"><b>City:</b></label>
+    <input type="text" placeholder="City" name="user[city]" required><br>
+    <label for="state"><b>State:</b></label>
+    <select name="state" id="state">
+        <option value="AZ">AZ</option>
+        <option value="CA">CA</option>
+        <option value="IL">IL</option>
+        <option value="WA">WA</option>
+    </select><br>
+    <button type="submit">Update Records</button>
+</form>
+
 <p>Find me in app/views/users/edit.html.erb</p>
