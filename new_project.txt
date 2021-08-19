@@ -98,11 +98,11 @@ In VS Code: Go to /config/routes.ruby
 
 ** For NESTED routing **
 
-resources :sessions
-resources :users
-resources :secrets do
-    resources :likes
-end
+  resources :sessions
+  resources :users
+  resources :events do
+    resources :attendees
+  end
 
 ~~~~~~~~~ OR ~~~~~~~~~~~~
 ~~ ADD ROUTES MANUALLY ~~
@@ -126,18 +126,51 @@ delete "products/:id" => "products#destroy"
 
 rails g controller Users index new edit show
 
+* OR ADD CUSTOM *
+
+/vagrant/rails/your_project$ rails g controller <ControllerName*plural and capitalized*> <method> <method> *space separated
 
 ********  FOR LOGIN & REG: *************************************
-You will want SESSION controller with current_user HELPER METHOD
+Update APPLICATION controller with current_user HELPER METHOD
 
   def current_user
     User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
 
-* OR ADD CUSTOM *
+******************************
+*** ADD CREATE CONTROLLERS ***
+*** TO SESSIONS AND USERS ****
 
-/vagrant/rails/your_project$ rails g controller <ControllerName*plural and capitalized*> <method> <method> *space separated
+USER CONTROLLER
+  def create
+    @user = User.create(user_params)
+    if @user.valid?
+      # redirect_to dojo_user_path(dojo_id: @user.dojo_id, id: @user.id)
+      redirect_to "/sessions/new"
+    else
+      flash[:notice] = @user.errors.full_messages
+      redirect_to :back
+    end
+  end
+
+  private
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+
+
+SESSION CONTROLLER
+  def create
+    @user = User.find_by_email(params[:email])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to "/users/#{@user.id}"
+    else
+      flash[:errors] = ["Invalid Combination"]
+      redirect_to "/sessions/new"
+    end
+  end
 
 *** SPIN UP SERVER:  ****
 /vagrant/rails/your_project$ rails s -b 0.0.0.0
@@ -158,6 +191,8 @@ You will want SESSION controller with current_user HELPER METHOD
     <input type="password" placeholder="Repeat Password" name="user[password_confirmation]" required><br>
     <button type="submit">Sign Up</button>
 </form>
+
+
 
 
 *** LOG OUT BUTTON ***

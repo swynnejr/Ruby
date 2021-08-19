@@ -10,25 +10,25 @@ class SessionsController < ApplicationController
   def create
     # @user = User.find_by(email: params[:email])
     # ~~ OR ~~
-    @user = User.find_by_email(params[:email]).try(:authenticate, params[:password])
-    if @user
-      session[:user_id] = @user.id
-      redirect_to "/users/#{@user.id}"
-    else
-      flash[:errors] = ["Invalid Combination"]
-      # redirect_to :back
-      # ~~ OR ~~
-      redirect_to "/sessions/new"
-    end
-    # ~~ OR ~~
-    # @user = User.find_by_email(params[:email])
-    # if @user && @user.authenticate(params[:password])
+    # @user = User.find_by_email(params[:email]).try(:authenticate, params[:password])
+    # if @user
     #   session[:user_id] = @user.id
     #   redirect_to "/users/#{@user.id}"
     # else
     #   flash[:errors] = ["Invalid Combination"]
+    #   # redirect_to :back
+    #   # ~~ OR ~~
     #   redirect_to "/sessions/new"
     # end
+    # ~~ OR ~~
+    @user = User.find_by_email(params[:email])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to "/users/#{@user.id}"
+    else
+      flash[:errors] = ["Invalid Combination"]
+      redirect_to "/sessions/new"
+    end
   end
 
   def destroy

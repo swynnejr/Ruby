@@ -20,8 +20,6 @@ class UsersController < ApplicationController
       flash[:notice] = @user.errors.full_messages
       redirect_to :back
     end
-
-
   end
   
   def show
