@@ -4,7 +4,7 @@
     <li>Host: <%= @event.user.f_name %></li>
     <li>Date: <%= @event.date %></li>
     <li>Location: <%= @event.city %></li>
-    <li>Expected Attendance:</li>
+    <li>Expected Attendance: <%= @event.attendees.count %></li>
 </ul>
 <table style="border:1px solid #ccc">
     <tr>
@@ -12,6 +12,13 @@
         <th>Location</th>
         <th>State</th>
     </tr>
+    <% @attendees.each do |attendee| %>
+    <tr>
+        <td><%= attendee.user.f_name %> <%= attendee.user.l_name %></td>
+        <td><%= attendee.user.city %></td>
+        <td><%= attendee.user.state %></td>
+    </tr>
+    <% end %>
 </table>
 
 <h3>Discussion about this event:</h3>

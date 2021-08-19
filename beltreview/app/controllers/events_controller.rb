@@ -14,7 +14,6 @@ class EventsController < ApplicationController
       flash[:notice] = @event.errors.full_messages
       redirect_to :back
     end
-
   end
 
   def edit
@@ -22,7 +21,19 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @attendees = @event.attendees.all
   end
+
+  def destroy
+    event = Event.find(params[:id])
+    if current_user.id == event.user_id
+      event.destroy
+      redirect_to :back
+    else
+      redirect_to "/events"
+    end
+  end
+
 
   private
     def event_params

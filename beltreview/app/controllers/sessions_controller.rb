@@ -15,4 +15,16 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    # Log User out
+    # set session[:user_id] to null
+    # redirect to login page
+    #  ~~ OR ~~
+    # session.clear
+    # ~~ OR ~~
+    reset_session
+    redirect_to "/sessions/new"
+  end
+
+
 end
