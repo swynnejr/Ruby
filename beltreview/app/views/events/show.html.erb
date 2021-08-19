@@ -1,9 +1,9 @@
-<h1>Event Name goes here</h1>
+<h1><%= @event.title %></h1>
 <a href="/events">Event Dashboard</a>
 <ul>
-    <li>Host:</li>
-    <li>Date:</li>
-    <li>Location:</li>
+    <li>Host: <%= @event.user.f_name %></li>
+    <li>Date: <%= @event.date %></li>
+    <li>Location: <%= @event.city %></li>
     <li>Expected Attendance:</li>
 </ul>
 <table style="border:1px solid #ccc">

@@ -1,21 +1,24 @@
 <h1>Edit your profile</h1>
 <a href="/events">Event Dashboard</a>
-<form action="/users" style="border:1px solid #ccc" method="POST">
+<form action="/users/<%= @user.id %>" style="border:1px solid #ccc" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="patch">
     <label for="f_name"><b>First Name:</b></label>
-    <input type="text" placeholder="First Name" name="user[f_name]" required><br>
+    <input type="text" value="<%= @user.f_name %>" name="user[f_name]" required><br>
     <label for="l_name"><b>Last Name:</b></label>
-    <input type="text" placeholder="Last Name" name="user[l_name]" required><br>
+    <input type="text" value="<%= @user.l_name %>" name="user[l_name]" required><br>
     <label for="email"><b>Email:</b></label>
-    <input type="text" placeholder="Enter Email" name="user[email]" required><br>
+    <input type="text" value="<%= @user.email %>" name="user[email]" required><br>
     <label for="city"><b>City:</b></label>
-    <input type="text" placeholder="City" name="user[city]" required><br>
+    <input type="text" value="<%= @user.city %>" name="user[city]" required><br>
     <label for="state"><b>State:</b></label>
-    <select name="state" id="state">
+    <select name="user[state]">
+        <option value="<%= current_user.state %>"><%= current_user.state %></option>
         <option value="AZ">AZ</option>
         <option value="CA">CA</option>
         <option value="IL">IL</option>
-        <option value="WA">WA</option>
+        <option value="TX">TX</option>
+        <option value="WA">WA</option>        
     </select><br>
     <button type="submit">Update Records</button>
 </form>

@@ -1,5 +1,5 @@
-<h1>Welcome, current_user.name</h1>
-<a href="/users/1">Edit Your Profile</a>
+<h1>Welcome, <%= current_user.f_name %></h1>
+<a href="/users/<%= current_user.id %>">Edit Your Profile</a>
 
 <h3>Here are some of the events in your home state:</h3>
 <table style="border:1px solid #ccc">
@@ -10,6 +10,16 @@
         <th>Host</th>
         <th>Actions</th>
     </tr>
+    <% @local_events.each do |event| %>
+    <tr>
+        <td><a href="/events/<%= event.id %>"><%= event.title %></a></td>
+        <td><%= event.date %></td>
+        <td><%= event.city %></td>
+        <td><%= event.user_id %></td>
+        <td>Actions</td>
+    </tr>
+    <% end %>
+
 </table>
 
 <h3>Here are featured events in OTHER states:</h3>
@@ -33,12 +43,14 @@
     <label for="city"><b>Location:</b></label>
     <input type="text" placeholder="City" name="event[city]" required><br>
     <label for="state"><b>State:</b></label>
-    <select name="state" id="state">
+    <select name="event[state]" id="state">
         <option value="AZ">AZ</option>
         <option value="CA">CA</option>
         <option value="IL">IL</option>
+        <option value="TX">TX</option>
         <option value="WA">WA</option>
     </select><br>
+    <input type="hidden" name="event[user_id]" value="<%= current_user.id %>">
     <button type="submit">Add Event</button>
 </form>
 

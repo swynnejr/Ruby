@@ -16,9 +16,21 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    user = User.find(params[:id])
+    user.update(user_params)
+    user.save
+    puts user.errors.full_messages if user.errors
+    redirect_to "/events"
+    # fail   <<<< Checks params being passed through
+
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   private

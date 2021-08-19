@@ -30,6 +30,16 @@ THREE WAY: AKA One to Many & Many to Many:
 
 ERD:2) rake db:migrate
 
+
+*********
+ADDING COLUMN TO EXISTING MODEL:
+rails generate migration add_<what to add>_to_<model to add to> 
+<what_to_add>:<type> (<-- goes on the same line)
+
+REMOVING COLUMN FROM EXISTING MODEL:
+rails generate migration Remove<FieldName>From<TableName> <what_to_add>:<type>
+
+
 *** Create table relationships ***
 Learn Platform Lesson: https://login.codingdojo.com/m/9/4630/31347
 *** This is a 3 way example ***
