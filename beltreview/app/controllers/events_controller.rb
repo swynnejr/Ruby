@@ -1,6 +1,9 @@
 class EventsController < ApplicationController
   def index
-    @local_events = Event.all
+    @user = User.find(session[:user_id])
+    @users = User.all
+    @local_events = Event.all.where(state: @user.state)
+    @other_events = Event.all.where.not(state: @user.state)
   end
 
   def new

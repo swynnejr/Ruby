@@ -107,3 +107,7 @@ vagrant@vagrant-ubuntu-trusty-64:/vagrant/beltreview$ rails g controller Welcome
         <td>Actions</td>
     </tr>
     <% end %>
+
+
+        <% else if event.attendees.include?(current_user)%>
+            <p>Joined</p>
