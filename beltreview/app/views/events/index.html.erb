@@ -21,7 +21,7 @@
             <a href="/events/<%= event.id%>" data-method="delete">Delete</a>|<a href="/events/<%= event.id%>/edit">Edit</a>
         <% end %>
         <% if current_user.events_attending.include?(event)%>
-            <p>You are attending!</p> <a href="/events/<%= event.id %>/attendees/<%= event.attendees.first.id %>" data-method="delete">Cancel</a>
+            <p>You are attending!</p> <a href="/events/<%= event.id %>/attendees/<%= current_user.id %>" data-method="delete">Cancel</a>
             <% else %>
             <a href="/events/<%= event.id %>/attendees" data-method="post">Join</a>
             <% end %>

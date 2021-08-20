@@ -9,8 +9,9 @@ class AttendeesController < ApplicationController
 
     def destroy
         # redirect_to "/users/#{current_user.id}" unless current_user.id == params[:id].to_i
-        @attendee = Attendee.find(params[:id])
-        @attendee.destroy
+        event = Event.find(params[:event_id])
+        attendee = Attendee.find_by(event: event, user: current_user)
+        attendee.destroy
         redirect_to :back
     end
     
